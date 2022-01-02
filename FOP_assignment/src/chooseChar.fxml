@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="500.0" prefWidth="600.0" style="-fx-background-color: #FFF8F5;" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/17" fx:controller="chooseCharController">
+   <children>
+      <ImageView fx:id="staffIcon" fitHeight="150.0" fitWidth="200.0" layoutX="100.0" layoutY="172.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@staff.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="customerIcon" fitHeight="150.0" fitWidth="200.0" layoutX="354.0" layoutY="172.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@customer.png" />
+         </image>
+      </ImageView>
+      <RadioButton fx:id="staffButton" layoutX="142.0" layoutY="367.0" mnemonicParsing="false" onAction="#displayWindow" text="STAFF" textFill="#193a6f">
+         <font>
+            <Font name="Comic Sans MS" size="13.0" />
+         </font>
+      </RadioButton>
+      <RadioButton fx:id="customerButton" layoutX="381.0" layoutY="367.0" mnemonicParsing="false" onAction="#displayWindow" text="CUSTOMER" textFill="#193a6f">
+         <font>
+            <Font name="Comic Sans MS" size="13.0" />
+         </font>
+      </RadioButton>
+      <Label layoutX="186.0" layoutY="74.0" text="Choose your character " textFill="#193a6f">
+         <font>
+            <Font name="Comic Sans MS Bold" size="20.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

@@ -7,7 +7,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" fx:id="mainPage" minHeight="400.0" minWidth="600.0" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ShowtimesController">
+<AnchorPane id="AnchorPane" fx:id="mainPage" minHeight="400.0" minWidth="600.0" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #FFF8F5;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ShowtimesController">
    <children>
       <Button fx:id="doctorStrange" layoutX="58.0" layoutY="14.0" maxHeight="180.0" maxWidth="140.0" minHeight="190.0" minWidth="155.0" mnemonicParsing="false" onAction="#showDoctorStrange" style="-fx-background-color: #193A6F;" text="doctorStrange" AnchorPane.leftAnchor="58.0" AnchorPane.topAnchor="3.0">
          <graphic>
@@ -45,7 +45,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <AnchorPane fx:id="doctorStrangePage" minHeight="400.0" minWidth="600.0" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: white;" visible="false">
+      <AnchorPane fx:id="doctorStrangePage" minHeight="400.0" minWidth="600.0" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #FFF8F5;" visible="false">
          <children>
             <ImageView fitHeight="350.0" fitWidth="260.0" layoutX="14.0" layoutY="36.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="341.0" AnchorPane.topAnchor="36.0">
                <image>
@@ -74,7 +74,7 @@
             </Button>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="eternalsPage" maxHeight="400.0" maxWidth="600.0" minHeight="400.0" minWidth="600.0" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: white;" visible="false">
+      <AnchorPane fx:id="eternalsPage" maxHeight="400.0" maxWidth="600.0" minHeight="400.0" minWidth="600.0" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #FFF8F5;" visible="false">
          <children>
             <Button fx:id="back" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#back" style="-fx-background-color: #193a6f;" text="Back" textFill="#f98125" AnchorPane.leftAnchor="2.0" AnchorPane.topAnchor="2.0">
                <font>
@@ -103,7 +103,7 @@
             </Text>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="spiderManPage" maxHeight="400.0" maxWidth="600.0" minHeight="400.0" minWidth="600.0" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: white;" visible="false">
+      <AnchorPane fx:id="spiderManPage" maxHeight="400.0" maxWidth="600.0" minHeight="400.0" minWidth="600.0" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #FFF8F5;" visible="false">
          <children>
             <ImageView fitHeight="350.0" fitWidth="260.0" layoutX="14.0" layoutY="61.0" pickOnBounds="true" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="347.0" AnchorPane.topAnchor="36.0">
                <image>
@@ -132,7 +132,7 @@
             </Text>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="venomPage" maxHeight="400.0" maxWidth="600.0" minHeight="400.0" minWidth="600.0" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: white;">
+      <AnchorPane fx:id="venomPage" maxHeight="400.0" maxWidth="600.0" minHeight="400.0" minWidth="600.0" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #FFF8F5;" visible="false">
          <children>
             <ImageView fitHeight="350.0" fitWidth="260.0" layoutX="14.0" layoutY="64.0" pickOnBounds="true" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="347.0" AnchorPane.topAnchor="36.0">
                <image>

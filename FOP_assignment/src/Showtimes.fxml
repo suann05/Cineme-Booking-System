@@ -11,15 +11,15 @@
 
 <AnchorPane id="AnchorPane" fx:id="mainPage" minHeight="400.0" minWidth="600.0" prefHeight="500.0" prefWidth="600.0" style="-fx-background-color: #FFF8F5;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ShowtimesController">
    <children>
-      <RadioButton layoutX="92.0" layoutY="455.0" mnemonicParsing="false" text="RadioButton" AnchorPane.leftAnchor="92.0" />
-      <RadioButton layoutX="256.0" layoutY="455.0" mnemonicParsing="false" text="RadioButton" />
-      <RadioButton layoutX="424.0" layoutY="455.0" mnemonicParsing="false" text="RadioButton" AnchorPane.rightAnchor="92.0" />
-      <Label layoutX="270.0" layoutY="39.0" text="SHOWS" textFill="#193a6f" AnchorPane.topAnchor="14.0">
+      <RadioButton layoutX="70.0" layoutY="455.0" mnemonicParsing="false" text="RadioButton" AnchorPane.leftAnchor="70.0" />
+      <RadioButton layoutX="245.0" layoutY="455.0" mnemonicParsing="false" text="RadioButton" AnchorPane.leftAnchor="245.0" />
+      <RadioButton layoutX="430.0" layoutY="455.0" mnemonicParsing="false" text="RadioButton" AnchorPane.rightAnchor="70.0" />
+      <Label layoutX="260.0" layoutY="14.0" text="SHOWS" textFill="#193a6f" AnchorPane.topAnchor="14.0">
          <font>
             <Font name="Comic Sans MS" size="20.0" />
          </font>
       </Label>
-      <Button fx:id="doctorStrange" layoutX="58.0" layoutY="53.0" maxHeight="180.0" maxWidth="140.0" minHeight="190.0" minWidth="155.0" mnemonicParsing="false" onAction="#showDoctorStrange" style="-fx-background-color: #193A6F;" text="doctorStrange" AnchorPane.leftAnchor="58.0" AnchorPane.topAnchor="53.0">
+      <Button fx:id="doctorStrange" layoutX="114.0" layoutY="53.0" maxHeight="180.0" maxWidth="140.0" minHeight="190.0" minWidth="155.0" mnemonicParsing="false" onAction="#showDoctorStrange" style="-fx-background-color: #193A6F;" text="doctorStrange" AnchorPane.leftAnchor="114.0" AnchorPane.topAnchor="53.0">
          <graphic>
             <ImageView fitHeight="180.0" fitWidth="140.0" pickOnBounds="true">
                <image>
@@ -27,7 +27,7 @@
                </image>
             </ImageView>
          </graphic></Button>
-      <Button fx:id="eternals" layoutX="58.0" layoutY="250.0" maxHeight="180.0" maxWidth="140.0" minHeight="190.0" minWidth="155.0" mnemonicParsing="false" onAction="#showEternals" style="-fx-background-color: #193A6F;" text="eternals" AnchorPane.bottomAnchor="60.0">
+      <Button fx:id="eternals" layoutX="114.0" layoutY="250.0" maxHeight="180.0" maxWidth="140.0" minHeight="190.0" minWidth="155.0" mnemonicParsing="false" onAction="#showEternals" style="-fx-background-color: #193A6F;" text="eternals" AnchorPane.bottomAnchor="60.0">
          <graphic>
             <ImageView fitHeight="180.0" fitWidth="140.0" pickOnBounds="true">
                <image>
@@ -36,7 +36,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <Button fx:id="spiderMan" layoutX="230.0" layoutY="53.0" maxHeight="180.0" maxWidth="140.0" minHeight="190.0" minWidth="155.0" mnemonicParsing="false" onAction="#showSpiderMan" style="-fx-background-color: #193A6F;" text="spiderMan" AnchorPane.topAnchor="53.0">
+      <Button fx:id="spiderMan" layoutX="309.0" layoutY="53.0" maxHeight="180.0" maxWidth="140.0" minHeight="190.0" minWidth="155.0" mnemonicParsing="false" onAction="#showSpiderMan" style="-fx-background-color: #193A6F;" text="spiderMan" AnchorPane.topAnchor="53.0">
          <graphic>
             <ImageView fitHeight="180.0" fitWidth="140.0" pickOnBounds="true" x="189.0" y="14.0">
                <image>
@@ -44,7 +44,7 @@
                </image>
             </ImageView>
          </graphic></Button>
-      <Button fx:id="venom" layoutX="232.0" layoutY="250.0" maxHeight="180.0" maxWidth="140.0" minHeight="190.0" minWidth="155.0" mnemonicParsing="false" onAction="#showVenom" style="-fx-background-color: #193A6F;" text="venom" AnchorPane.bottomAnchor="60.0">
+      <Button fx:id="venom" layoutX="309.0" layoutY="250.0" maxHeight="180.0" maxWidth="140.0" minHeight="190.0" minWidth="155.0" mnemonicParsing="false" onAction="#showVenom" style="-fx-background-color: #193A6F;" text="venom" AnchorPane.bottomAnchor="60.0">
          <graphic>
             <ImageView fitHeight="180.0" fitWidth="140.0" pickOnBounds="true">
                <image>

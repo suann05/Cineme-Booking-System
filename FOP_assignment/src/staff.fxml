@@ -1,11 +1,52 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1">
-    
+<AnchorPane id="AnchorPane" prefHeight="500.0" prefWidth="600.0" style="-fx-background-color: #FFF8F5;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <RadioButton layoutX="365.0" layoutY="108.0" mnemonicParsing="false" text="RadioButton" />
+      <ImageView fx:id="seatIcon" fitHeight="150.0" fitWidth="200.0" layoutX="352.0" layoutY="42.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@seat.png" />
+         </image></ImageView>
+      <ImageView fx:id="movieIcon" fitHeight="150.0" fitWidth="200.0" layoutX="104.0" layoutY="42.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@movie.png" />
+         </image>
+      </ImageView>
+      <RadioButton fx:id="movieButton" layoutX="135.0" layoutY="218.0" mnemonicParsing="false" text="Add Movie" textFill="#193a6f">
+         <font>
+            <Font name="Comic Sans MS" size="13.0" />
+         </font>
+      </RadioButton>
+      <ImageView fx:id="paymentIcon" fitHeight="150.0" fitWidth="200.0" layoutX="104.0" layoutY="268.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@payment.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="fandbIcon" fitHeight="150.0" fitWidth="200.0" layoutX="352.0" layoutY="268.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@f&amp;b.png" />
+         </image>
+      </ImageView>
+      <RadioButton fx:id="seatButton" layoutX="383.0" layoutY="218.0" mnemonicParsing="false" text="Add Seat" textFill="#193a6f">
+         <font>
+            <Font name="Comic Sans MS" size="13.0" />
+         </font>
+      </RadioButton>
+      <RadioButton fx:id="paymentButton" layoutX="135.0" layoutY="442.0" mnemonicParsing="false" text="Payment" textFill="#193a6f">
+         <font>
+            <Font name="Comic Sans MS" size="13.0" />
+         </font>
+      </RadioButton>
+      <RadioButton fx:id="fandbButton" layoutX="346.0" layoutY="442.0" mnemonicParsing="false" text="Add Food &amp; Beverage" textFill="#193a6f">
+         <font>
+            <Font name="Comic Sans MS" size="13.0" />
+         </font>
+      </RadioButton>
+   </children>
 </AnchorPane>

@@ -218,7 +218,7 @@ public class OnAction {
             if(resultSet.isBeforeFirst()){
                 
                 Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.setContentText("THIS SEAT ("+seat+") HAS BEEN CHOSEN");
+                alert.setContentText("THIS SEAT HAS BEEN CHOSEN");
                 alert.show();
             }
             else{

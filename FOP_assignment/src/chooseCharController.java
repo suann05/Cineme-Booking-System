@@ -44,7 +44,7 @@ public class chooseCharController {
     public void displayWindow(ActionEvent event) throws IOException{
         
         if(customerButton.isSelected()){
-            root = FXMLLoader.load(getClass().getResource("customer.fxml"));
+            root = FXMLLoader.load(getClass().getResource("Showtimes.fxml"));
             stage = (Stage)((Node)event.getSource()).getScene().getWindow();
             scene = new Scene(root);
             stage.setScene(scene);

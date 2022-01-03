@@ -237,7 +237,7 @@ public class OnAction {
                
                if(k==1){
                    alert = new Alert(Alert.AlertType.CONFIRMATION);
-                   alert.setContentText("THE SEAT "+seat+" IS NOW RESERVED FOR YOU");
+                   alert.setContentText("THE SEAT IS NOW RESERVED FOR YOU");
                    alert.show();
                }else{
                    alert = new Alert(Alert.AlertType.ERROR);

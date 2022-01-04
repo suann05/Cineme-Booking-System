@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
+
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #FFF8F5;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+   <top>
+      <Label fx:id="title" alignment="CENTER" contentDisplay="CENTER" prefHeight="33.0" prefWidth="199.0" text="ADD SHOWTIMES" textAlignment="JUSTIFY" textFill="#1f1f1f" BorderPane.alignment="CENTER">
+         <font>
+            <Font name="Comic Sans MS Bold" size="20.0" />
+         </font>
+      </Label>
+   </top>
+   <left>
+      <Label fx:id="existingMovies" prefHeight="50.0" prefWidth="104.0" text="  EXISTING&#10;  MOVIES :">
+         <font>
+            <Font name="Comic Sans MS Bold" size="15.0" />
+         </font>
+         <BorderPane.margin>
+            <Insets />
+         </BorderPane.margin>
+      </Label>
+   </left>
+   <center>
+      <AnchorPane fx:id="mainpage" prefHeight="243.0" prefWidth="496.0" BorderPane.alignment="CENTER">
+         <children>
+            <ImageView fx:id="spiderman" fitHeight="171.0" fitWidth="132.0" layoutX="123.0">
+               <image>
+                  <Image url="@spiderMan.jpg" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="eternals" fitHeight="171.0" fitWidth="124.0" layoutX="255.0">
+               <image>
+                  <Image url="@eternals.jpg" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="venom" fitHeight="171.0" fitWidth="116.0" layoutX="379.0">
+               <image>
+                  <Image url="@venom.jpg" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="doctorStrange" fitHeight="171.0" fitWidth="123.0">
+               <image>
+                  <Image url="@doctorStrange.jpg" />
+               </image>
+            </ImageView>
+            <Button fx:id="button2" alignment="BOTTOM_RIGHT" layoutX="362.0" layoutY="322.0" mnemonicParsing="false" onAction="#removeMovies" text="REMOVE MOVIES">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Button>
+            <Button fx:id="button1" alignment="BOTTOM_LEFT" layoutX="7.0" layoutY="322.0" mnemonicParsing="false" onAction="#addMovies" text="ADD MOVIES" textAlignment="CENTER">
+               <font>
+                  <Font name="Comic Sans MS" size="14.0" />
+               </font>
+            </Button>
+         </children>
+      </AnchorPane>
+   </center>
+</BorderPane>

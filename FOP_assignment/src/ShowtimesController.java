@@ -60,8 +60,7 @@ public class ShowtimesController {
     @FXML
     private RadioButton cancelButton;
     
-    @FXML
-    private RadioButton showButton;
+    
     
     
     
@@ -109,6 +108,16 @@ public class ShowtimesController {
     public void makeBooking(ActionEvent event) throws IOException{
         if(bookingButton.isSelected()){
         root = FXMLLoader.load(getClass().getResource("bookingSeat.fxml"));
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+        }
+    }
+    
+     public void cancelBooking(ActionEvent event) throws IOException{
+        if(cancelButton.isSelected()){
+        root = FXMLLoader.load(getClass().getResource("cancelBooking.fxml"));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);

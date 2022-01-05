@@ -11,15 +11,11 @@
 
 <AnchorPane id="AnchorPane" fx:id="mainPage" minHeight="400.0" minWidth="600.0" prefHeight="500.0" prefWidth="600.0" style="-fx-background-color: #FFF8F5;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ShowtimesController">
    <children>
-      <RadioButton fx:id="bookingButton" layoutX="70.0" layoutY="455.0" mnemonicParsing="false" onAction="#makeBooking" text="Make Booking" textFill="#193a6f" AnchorPane.leftAnchor="70.0">
+      <RadioButton fx:id="bookingButton" layoutX="139.0" layoutY="455.0" mnemonicParsing="false" onAction="#makeBooking" text="Make Booking" textFill="#193a6f" AnchorPane.leftAnchor="139.0">
          <font>
             <Font name="Comic Sans MS" size="13.0" />
          </font></RadioButton>
-      <RadioButton fx:id="cancelButton" layoutX="245.0" layoutY="455.0" mnemonicParsing="false" text="Cancel Booking" textFill="#193a6f" AnchorPane.leftAnchor="245.0">
-         <font>
-            <Font name="Comic Sans MS" size="13.0" />
-         </font></RadioButton>
-      <RadioButton fx:id="showButton" layoutX="430.0" layoutY="455.0" mnemonicParsing="false" text="Show Ticket" textFill="#193a6f" AnchorPane.rightAnchor="70.0">
+      <RadioButton fx:id="cancelButton" layoutX="331.0" layoutY="455.0" mnemonicParsing="false" onAction="#cancelBooking" text="Cancel Booking" textFill="#193a6f" AnchorPane.leftAnchor="331.0">
          <font>
             <Font name="Comic Sans MS" size="13.0" />
          </font></RadioButton>

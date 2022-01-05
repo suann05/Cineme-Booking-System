@@ -54,16 +54,16 @@ public class bookingSeatController implements Initializable {
     private Stage stage;
     private Scene scene;
     private Parent root;
-    private String[] movie1 = {"Spider Man","Venom"};
-    private String[] time1 = {"14:30","17:30"};
-    private String[] date1 = {"3/1/2021","7/1/2021"};
+    private String[] movie1 = {"Spider Man","Venom","Eternals","Doctor Strange"};
+    private String[] time1 = {"11:00","13:15","14:30","15:45","17:30"};
+    private String[] date1 = {"3/1/2022","4/1/2022","5/1/2022","6/1/2022","7/1/2022"};
     int sum=0;
     String seat = "";
     
     
     
     public void backButton(ActionEvent event) throws IOException{
-        root = FXMLLoader.load(getClass().getResource("customer.fxml"));
+        root = FXMLLoader.load(getClass().getResource("Showtimes.fxml"));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
@@ -178,6 +178,114 @@ public class bookingSeatController implements Initializable {
         
     }
     
+    /*public int seatCheckBox1(){
+        if(A1.isSelected())
+            sum=8;
+        else if(A2.isSelected())
+            sum=8;
+        else if(A3.isSelected())
+            sum=8;
+        else if(A4.isSelected())
+            sum=8;
+        else if(A5.isSelected())
+            sum=8;
+        else if(A6.isSelected())
+            sum=8;
+        else if(A7.isSelected())
+            sum=8;
+        else if(A8.isSelected())
+            sum=8;
+        else if(A9.isSelected())
+            sum=8;
+        else if(A10.isSelected())
+            sum=8;
+        else if(B1.isSelected())
+            sum=8;
+        else if(B2.isSelected())
+            sum=8;
+        else if(B3.isSelected())
+            sum=8;
+        else if(B4.isSelected())
+            sum=8;
+        else if(B5.isSelected())
+            sum=8;
+        else if(B6.isSelected())
+            sum=8;
+        else if(B7.isSelected())
+            sum=8;
+        else if(B8.isSelected())
+            sum=8;
+        else if(B9.isSelected())
+            sum=8;
+        else if(B10.isSelected())
+            sum=8;
+        else if(C1.isSelected())
+            sum=8;
+        else if(C2.isSelected())
+            sum=8;
+        else if(C3.isSelected())
+            sum=8;
+        else if(C4.isSelected())
+            sum=8;
+        else if(C5.isSelected())
+            sum=8;
+        else if(C6.isSelected())
+            sum=8;
+        else if(C7.isSelected())
+            sum=8;
+        else if(C8.isSelected())
+            sum=8;
+        else if(C9.isSelected())
+            sum=8;
+        else if(C10.isSelected())
+            sum=8;
+        else if(D1.isSelected())
+            sum=10;
+        else if(D2.isSelected())
+            sum=10;
+        else if(D3.isSelected())
+            sum=10;
+        else if(D4.isSelected())
+            sum=10;
+        else if(D5.isSelected())
+            sum=10;
+        else if(D6.isSelected())
+            sum=10;
+        else if(D7.isSelected())
+            sum=10;
+        else if(D8.isSelected())
+            sum=10;
+        else if(D9.isSelected())
+            sum=10;
+        else if(D10.isSelected())
+            sum=10;
+        else if(E1.isSelected())
+            sum=10;
+        else if(E2.isSelected())
+            sum=10;
+        else if(E3.isSelected())
+            sum=10;
+        else if(E4.isSelected())
+            sum=10;
+        else if(E5.isSelected())
+            sum=10;
+        else if(E6.isSelected())
+            sum=10;
+        else if(E7.isSelected())
+           sum=10;
+        else if(E8.isSelected())
+            sum=10;
+        else if(E9.isSelected())
+            sum=10;
+        else if(E10.isSelected())
+            sum=10;
+        
+        
+        return sum;
+        
+        
+    } */
+    
     public void bookButton(ActionEvent event) {
         String movie = movieChoiceBox.getValue();
         String time = timeChoiceBox.getValue();
@@ -193,6 +301,7 @@ public class bookingSeatController implements Initializable {
         String time = timeChoiceBox.getValue();
         String date = dateChoiceBox.getValue();
         String seatno = seatCheckBox();
+        
         if(movie!=null&&time!=null&&date!=null&&seatno!=null){
         try {
             OnAction.bookSeat(event, movie, date, time, seat);
@@ -217,64 +326,7 @@ public class bookingSeatController implements Initializable {
         stage.show();
     }
     
-    /*public static void bookSeat(ActionEvent event,String movie,String date,String time,String seat)throws SQLException{
-        
-        Connection connection = null;
-        PreparedStatement preparedStatement = null;
-        ResultSet resultSet = null;
-        
-        try{
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/bookingseat", "root", "root");
-            preparedStatement = connection.prepareStatement("SELECT * FROM seat WHERE movie = ? and date = ? and time = ? and seat = ?");
-            preparedStatement.setString(1, movie);
-            preparedStatement.setString(2, date);
-            preparedStatement.setString(3, time);
-            preparedStatement.setString(4, seat);
-            resultSet = preparedStatement.executeQuery();
-            
-            if(resultSet.isBeforeFirst()){
-                
-                Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.setContentText("THIS SEAT ("+seat+") HAS BEEN CHOSEN");
-                alert.show();
-            }
-            else{
-               preparedStatement = connection.prepareStatement("INSERT INTO users(movie,date,time,seat) VALUES (?,?,?,?)");
-               preparedStatement.setString(1, movie);
-               preparedStatement.setString(2, date);
-               preparedStatement.setString(3, time);
-               preparedStatement.setString(4, seat);
-               preparedStatement.executeUpdate();
-            }
-            
-        }catch(SQLException e){
-            e.printStackTrace();
-        } finally{
-            if(resultSet!=null){
-                try{
-                    resultSet.close();
-                }catch(SQLException e){
-                    e.printStackTrace();
-                }
-            }
-            if(preparedStatement!=null){
-                try{
-                    preparedStatement.close();
-                }catch(SQLException e){
-                    e.printStackTrace();
-                }
-            }
-            if(connection!=null){
-                try{
-                    connection.close();
-                }catch(SQLException e){
-                    e.printStackTrace();
-                }
-            }
-            
-        }
-    }
-    */
+    
 
 
     @Override
@@ -287,18 +339,6 @@ public class bookingSeatController implements Initializable {
         dateChoiceBox.setOnAction(this::bookButton);
     }
     
-    public void bill(ActionEvent event){
-        bookButton(event);
-        String movie = movieChoiceBox.getValue();
-        String time = timeChoiceBox.getValue();
-        String date = dateChoiceBox.getValue();
-        String seatno = seatCheckBox();
-        
-        billTextField.setText(billTextField.getText()+"********************************************************");
-        billTextField.setText("***************************BILL*************************");
-        billTextField.setText("Movie:"+movie);
-        
-        
-    }
+    
     
 }

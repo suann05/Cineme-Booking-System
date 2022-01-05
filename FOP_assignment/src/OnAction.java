@@ -29,6 +29,7 @@ public class OnAction {
     static Parent root;
     static int sum;
     
+    
      
     
     public static void changeScene(ActionEvent e,String username,String fxmlfile) throws IOException{
@@ -218,12 +219,17 @@ public class OnAction {
             if(resultSet.isBeforeFirst()){
                 
                 Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.setContentText("THIS SEAT HAS BEEN CHOSEN");
+                alert.setContentText("THIS SEAT ("+seat+") HAS BEEN CHOSEN");
                 alert.show();
             }
             else{
                 
-               sum+=8;
+               if(seat=="D1"||seat=="D2"||seat=="D3"||seat=="D4"||seat=="D5"||seat=="D6"||seat=="D7"||seat=="D8"||seat=="D9"||seat=="D10"||
+                  seat=="E1"||seat=="E2"||seat=="E3"||seat=="E4"||seat=="E5"||seat=="E6"||seat=="E7"||seat=="E8"||seat=="E9"||seat=="E10"){
+                sum+=10;
+            }else{
+                   sum+=8;
+               }
                Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
                alert.setContentText("Total cost: RM"+sum);
                alert.show(); 
@@ -237,7 +243,7 @@ public class OnAction {
                
                if(k==1){
                    alert = new Alert(Alert.AlertType.CONFIRMATION);
-                   alert.setContentText("THE SEAT IS NOW RESERVED FOR YOU");
+                   alert.setContentText("THE SEAT ("+seat+") IS NOW RESERVED FOR YOU");
                    alert.show();
                }else{
                    alert = new Alert(Alert.AlertType.ERROR);
@@ -275,4 +281,358 @@ public class OnAction {
         }
     }
     
+    public static void removeSeat(ActionEvent event,String name,String date,String time,String seat){
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+        
+        try{
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/bookingseat", "root", "root");
+            preparedStatement = connection.prepareStatement("delete from seat where movie = ? and date = ? and time = ? and seat = ?");
+            preparedStatement.setString(1, name);
+            preparedStatement.setString(2, date);
+            preparedStatement.setString(3, time);
+            preparedStatement.setString(4, seat);
+            preparedStatement.execute();
+            
+            
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setContentText("THE CHANGES HAVE BEEN SAVED");
+            alert.show();
+           
+            
+        }catch(SQLException e){
+            e.printStackTrace();
+        } finally{
+            if(resultSet!=null){
+                try{
+                    resultSet.close();
+                }catch(SQLException e){
+                    e.printStackTrace();
+                }
+            }
+            if(preparedStatement!=null){
+                try{
+                    preparedStatement.close();
+                }catch(SQLException e){
+                    e.printStackTrace();
+                }
+            }
+            if(connection!=null){
+                try{
+                    connection.close();
+                }catch(SQLException e){
+                    e.printStackTrace();
+                }
+            }
+            
+        }
+    }
+    
+    public static void addmovie(ActionEvent event,String name,String date,String time)throws SQLException{
+        
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+        
+        try{
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/addmovie", "root", "root");
+            preparedStatement = connection.prepareStatement("SELECT * FROM movie WHERE name = ? and date = ? and time=?");
+            preparedStatement.setString(1, name);
+            preparedStatement.setString(2, date);
+            preparedStatement.setString(3, time);
+            
+            resultSet = preparedStatement.executeQuery();
+            
+            if(resultSet.isBeforeFirst()){
+                
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setContentText("A REPITITION HAS OCCURED");
+                alert.show();
+            }
+            else{
+              
+
+               preparedStatement = connection.prepareStatement("INSERT INTO movie(name,date,time) VALUES (?,?,?)");
+               preparedStatement.setString(1, name);
+               preparedStatement.setString(2, date);
+               preparedStatement.setString(3, time);
+               
+               int k = preparedStatement.executeUpdate();
+               
+               if(k==1){
+                   Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+                   alert.setContentText("THE CHANGES HAVE BEEN SAVED");
+                   alert.show();
+               }else{
+                   Alert alert = new Alert(Alert.AlertType.ERROR);
+                   alert.setContentText("THERE IS AN ERROR");
+                   alert.show();
+               }
+            
+            }
+            
+        }catch(SQLException e){
+            e.printStackTrace();
+        } finally{
+            if(resultSet!=null){
+                try{
+                    resultSet.close();
+                }catch(SQLException e){
+                    e.printStackTrace();
+                }
+            }
+            if(preparedStatement!=null){
+                try{
+                    preparedStatement.close();
+                }catch(SQLException e){
+                    e.printStackTrace();
+                }
+            }
+            if(connection!=null){
+                try{
+                    connection.close();
+                }catch(SQLException e){
+                    e.printStackTrace();
+                }
+            }
+            
+        }
+    }
+    
+    public static void removeMovie(ActionEvent event,String name,String date,String time){
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+        
+        try{
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/addmovie", "root", "root");
+            preparedStatement = connection.prepareStatement("delete from movie where name = ? and date = ? and time = ?");
+            preparedStatement.setString(1, name);
+            preparedStatement.setString(2, date);
+            preparedStatement.setString(3, time);
+            preparedStatement.execute();
+            
+            
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setContentText("THE CHANGES HAVE BEEN SAVED");
+            alert.show();
+           
+            
+        }catch(SQLException e){
+            e.printStackTrace();
+        } finally{
+            if(resultSet!=null){
+                try{
+                    resultSet.close();
+                }catch(SQLException e){
+                    e.printStackTrace();
+                }
+            }
+            if(preparedStatement!=null){
+                try{
+                    preparedStatement.close();
+                }catch(SQLException e){
+                    e.printStackTrace();
+                }
+            }
+            if(connection!=null){
+                try{
+                    connection.close();
+                }catch(SQLException e){
+                    e.printStackTrace();
+                }
+            }
+            
+        }
+    }
+    
+    public static void removefandb(ActionEvent event,String name){
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+        
+        try{
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/addfandb", "root", "root");
+            preparedStatement = connection.prepareStatement("delete from fandb where name = ?");
+            preparedStatement.setString(1, name);
+            preparedStatement.execute();
+            
+            
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setContentText("THE CHANGES HAVE BEEN SAVED");
+            alert.show();
+           
+            
+        }catch(SQLException e){
+            e.printStackTrace();
+        } finally{
+            if(resultSet!=null){
+                try{
+                    resultSet.close();
+                }catch(SQLException e){
+                    e.printStackTrace();
+                }
+            }
+            if(preparedStatement!=null){
+                try{
+                    preparedStatement.close();
+                }catch(SQLException e){
+                    e.printStackTrace();
+                }
+            }
+            if(connection!=null){
+                try{
+                    connection.close();
+                }catch(SQLException e){
+                    e.printStackTrace();
+                }
+            }
+            
+        }
+    }
+    
+    public static void addfandb(ActionEvent event,String name,String des,String price)throws SQLException{
+        
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+        
+        try{
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/addfandb", "root", "root");
+            preparedStatement = connection.prepareStatement("SELECT * FROM fandb WHERE name = ? and des = ? and price=?");
+            preparedStatement.setString(1, name);
+            preparedStatement.setString(2, des);
+            preparedStatement.setString(3, price);
+            
+            resultSet = preparedStatement.executeQuery();
+            
+            if(resultSet.isBeforeFirst()){
+                
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setContentText("A REPITITION HAS OCCURED");
+                alert.show();
+            }
+            else{
+              
+
+               preparedStatement = connection.prepareStatement("INSERT INTO fandb(name,des,price) VALUES (?,?,?)");
+               preparedStatement.setString(1, name);
+               preparedStatement.setString(2, des);
+               preparedStatement.setString(3, price);
+               
+               int k = preparedStatement.executeUpdate();
+               
+               if(k==1){
+                   Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+                   alert.setContentText("THE CHANGES HAVE BEEN SAVED");
+                   alert.show();
+               }else{
+                   Alert alert = new Alert(Alert.AlertType.ERROR);
+                   alert.setContentText("THERE IS AN ERROR");
+                   alert.show();
+               }
+            
+            }
+            
+        }catch(SQLException e){
+            e.printStackTrace();
+        } finally{
+            if(resultSet!=null){
+                try{
+                    resultSet.close();
+                }catch(SQLException e){
+                    e.printStackTrace();
+                }
+            }
+            if(preparedStatement!=null){
+                try{
+                    preparedStatement.close();
+                }catch(SQLException e){
+                    e.printStackTrace();
+                }
+            }
+            if(connection!=null){
+                try{
+                    connection.close();
+                }catch(SQLException e){
+                    e.printStackTrace();
+                }
+            }
+            
+        }
+    }
+    
+    public static void addPayment(ActionEvent event,String studentP,String classicP,String premiumP)throws SQLException{
+        
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+        
+        try{
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/addpayment", "root", "root");
+            preparedStatement = connection.prepareStatement("SELECT * FROM payment WHERE studentP = ? and classicP = ? and premiumP=?");
+            preparedStatement.setString(1, studentP);
+            preparedStatement.setString(2, classicP);
+            preparedStatement.setString(3, premiumP);
+            
+            resultSet = preparedStatement.executeQuery();
+            
+            if(resultSet.isBeforeFirst()){
+                
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setContentText("A REPITITION HAS OCCURED");
+                alert.show();
+            }
+            else{
+              
+
+               preparedStatement = connection.prepareStatement("INSERT INTO payment(studentP,classicP,premiumP) VALUES (?,?,?)");
+               preparedStatement.setString(1, studentP);
+               preparedStatement.setString(2, classicP);
+               preparedStatement.setString(3, premiumP);
+               
+               int k = preparedStatement.executeUpdate();
+               
+               if(k==1){
+                   Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+                   alert.setContentText("THE CHANGES HAVE BEEN SAVED");
+                   alert.show();
+               }else{
+                   Alert alert = new Alert(Alert.AlertType.ERROR);
+                   alert.setContentText("THERE IS AN ERROR");
+                   alert.show();
+               }
+            
+            }
+            
+        }catch(SQLException e){
+            e.printStackTrace();
+        } finally{
+            if(resultSet!=null){
+                try{
+                    resultSet.close();
+                }catch(SQLException e){
+                    e.printStackTrace();
+                }
+            }
+            if(preparedStatement!=null){
+                try{
+                    preparedStatement.close();
+                }catch(SQLException e){
+                    e.printStackTrace();
+                }
+            }
+            if(connection!=null){
+                try{
+                    connection.close();
+                }catch(SQLException e){
+                    e.printStackTrace();
+                }
+            }
+            
+        }
+    }
 }
+    
+

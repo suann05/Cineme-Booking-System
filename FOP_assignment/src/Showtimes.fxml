@@ -65,7 +65,7 @@
                   <Image url="@doctorStrange.jpg" />
                </image>
             </ImageView>
-            <Text fill="#193a6f" layoutX="277.0" layoutY="100.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Release Date : 3/1/2021  " textAlignment="CENTER" wrappingWidth="305.00001525878906" AnchorPane.bottomAnchor="395.62744140625" AnchorPane.leftAnchor="277.0" AnchorPane.rightAnchor="17.0" AnchorPane.topAnchor="83.0">
+            <Text fill="#193a6f" layoutX="277.0" layoutY="100.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Release Date : 3/1/2022  " textAlignment="CENTER" wrappingWidth="305.00001525878906" AnchorPane.bottomAnchor="395.62744140625" AnchorPane.leftAnchor="277.0" AnchorPane.rightAnchor="17.0" AnchorPane.topAnchor="83.0">
                <font>
                   <Font name="Comic Sans MS" size="15.0" />
                </font>
@@ -99,7 +99,7 @@
                   <Image url="@eternals.jpg" />
                </image>
             </ImageView>
-            <Text fill="#193a6f" layoutX="276.0" layoutY="100.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Release Date : 29/1/2022" textAlignment="CENTER" wrappingWidth="284.8033447265625" AnchorPane.bottomAnchor="395.62744140625" AnchorPane.leftAnchor="276.0" AnchorPane.rightAnchor="39.1966552734375" AnchorPane.topAnchor="83.46923828125">
+            <Text fill="#193a6f" layoutX="276.0" layoutY="100.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Release Date : 3/1/2022" textAlignment="CENTER" wrappingWidth="284.8033447265625" AnchorPane.bottomAnchor="395.62744140625" AnchorPane.leftAnchor="276.0" AnchorPane.rightAnchor="39.1966552734375" AnchorPane.topAnchor="83.46923828125">
                <font>
                   <Font name="Comic Sans MS" size="15.0" />
                </font>
@@ -128,7 +128,7 @@
                   <Font name="Comic Sans MS" size="12.0" />
                </font>
             </Button>
-            <Text fill="#193a6f" layoutX="300.0" layoutY="100.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Release Date : 3/1/2021" textAlignment="CENTER" wrappingWidth="275.00001525878906" AnchorPane.bottomAnchor="395.62744140625" AnchorPane.leftAnchor="300.0" AnchorPane.rightAnchor="24.999984741210938" AnchorPane.topAnchor="83.46923828125">
+            <Text fill="#193a6f" layoutX="300.0" layoutY="100.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Release Date : 3/1/2022" textAlignment="CENTER" wrappingWidth="275.00001525878906" AnchorPane.bottomAnchor="395.62744140625" AnchorPane.leftAnchor="300.0" AnchorPane.rightAnchor="24.999984741210938" AnchorPane.topAnchor="83.46923828125">
                <font>
                   <Font name="Comic Sans MS" size="15.0" />
                </font>

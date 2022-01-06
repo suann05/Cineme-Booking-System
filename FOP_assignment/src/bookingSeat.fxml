@@ -375,7 +375,7 @@
             <RadioButton fx:id="bev3" layoutX="322.0" layoutY="377.0" mnemonicParsing="false" onAction="#getBev" textFill="WHITE" />
             <RadioButton fx:id="bev4" layoutX="442.0" layoutY="377.0" mnemonicParsing="false" onAction="#getBev" textFill="WHITE" />
             <RadioButton fx:id="bev5" layoutX="556.0" layoutY="377.0" mnemonicParsing="false" onAction="#getBev" textFill="WHITE" />
-            <Button fx:id="submitButton" layoutX="259.0" layoutY="441.0" mnemonicParsing="false" onAction="#submitButton" style="-fx-background-color: #193A6F;" text="Submit" textFill="#f98125">
+            <Button fx:id="submitButton" layoutX="259.0" layoutY="441.0" mnemonicParsing="false" onAction="#submitButton1" style="-fx-background-color: #193A6F;" text="Submit" textFill="#f98125">
                <font>
                   <Font name="Comic Sans MS" size="12.0" />
                </font>

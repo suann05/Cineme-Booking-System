@@ -358,6 +358,7 @@ public class bookingSeatController implements Initializable {
     
     double sum0=0;
     double sum1=0;
+    double total;
    
     public void getFood(ActionEvent event){
         
@@ -390,7 +391,14 @@ public class bookingSeatController implements Initializable {
     }
     
      public void submitButton(){   
-        double total = sum0+sum1+sum2;
+        double total1 = total+sum2;
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setContentText("Total cost: RM"+total1);
+        alert.show();
+    }
+     
+     public void submitButton1(){   
+        total = sum0+sum1;
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setContentText("Total cost: RM"+total);
         alert.show();

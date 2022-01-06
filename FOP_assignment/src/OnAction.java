@@ -679,6 +679,135 @@ public class OnAction {
             return  connection;
         }
     
+    public static Connection getConnect3 (){
+        Connection connection = null;
+        try {
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/addseat", "root", "root");
+        } catch (SQLException ex) {
+            Logger.getLogger(OnAction.class.getName()).log(Level.SEVERE, null, ex);
+        }
+            
+            return  connection;
+        }
+    
+    public static void addSeat(ActionEvent event,String seat)throws SQLException{
+        
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+        
+        try{
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/addseat", "root", "root");
+            preparedStatement = connection.prepareStatement("SELECT * FROM seat WHERE Seat = ?");
+            preparedStatement.setString(1, seat);
+            
+            resultSet = preparedStatement.executeQuery();
+            
+            if(resultSet.isBeforeFirst()){
+                
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setContentText("A REPITITION HAS OCCURED");
+                alert.show();
+            }
+            else{
+              
+
+               preparedStatement = connection.prepareStatement("INSERT INTO seat(Seat) VALUES (?)");
+               preparedStatement.setString(1, seat);
+               
+               
+               int k = preparedStatement.executeUpdate();
+               
+               if(k==1){
+                   Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+                   alert.setContentText("THE CHANGES HAVE BEEN SAVED");
+                   alert.show();
+               }else{
+                   Alert alert = new Alert(Alert.AlertType.ERROR);
+                   alert.setContentText("THERE IS AN ERROR");
+                   alert.show();
+               }
+            
+            }
+            
+        }catch(SQLException e){
+            e.printStackTrace();
+        } finally{
+            if(resultSet!=null){
+                try{
+                    resultSet.close();
+                }catch(SQLException e){
+                    e.printStackTrace();
+                }
+            }
+            if(preparedStatement!=null){
+                try{
+                    preparedStatement.close();
+                }catch(SQLException e){
+                    e.printStackTrace();
+                }
+            }
+            if(connection!=null){
+                try{
+                    connection.close();
+                }catch(SQLException e){
+                    e.printStackTrace();
+                }
+            }
+            
+        }
+    }
+    
+    
+    
+    public static void removeSeat(ActionEvent event,String seat){
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+        
+        try{
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/addseat", "root", "root");
+            preparedStatement = connection.prepareStatement("delete from seat where Seat = ?");
+            preparedStatement.setString(1, seat);
+            preparedStatement.execute();
+            
+            
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setContentText("THE CHANGES HAVE BEEN SAVED");
+            alert.show();
+           
+            
+        }catch(SQLException e){
+            e.printStackTrace();
+        } finally{
+            if(resultSet!=null){
+                try{
+                    resultSet.close();
+                }catch(SQLException e){
+                    e.printStackTrace();
+                }
+            }
+            if(preparedStatement!=null){
+                try{
+                    preparedStatement.close();
+                }catch(SQLException e){
+                    e.printStackTrace();
+                }
+            }
+            if(connection!=null){
+                try{
+                    connection.close();
+                }catch(SQLException e){
+                    e.printStackTrace();
+                }
+            }
+            
+        }
+    }
+    
+    
+    
+    
     
 }
     

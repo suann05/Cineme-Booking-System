@@ -1,5 +1,6 @@
 
 import java.io.IOException;
+import java.sql.SQLException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -8,6 +9,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 /*
@@ -25,6 +27,9 @@ public class addseatController {
     private Button backButton;
     @FXML
     private Button submitButton;
+    @FXML
+    private TextField seatTextField;
+    
     
     private Stage stage;
     private Scene scene;
@@ -38,10 +43,25 @@ public class addseatController {
         stage.show();
     }
     
-    public void submitButton(){
-        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-        alert.setContentText("THE CHANGES HAVE BEEN SAVED");
-        alert.show();  
+    public void addButton(ActionEvent event) throws SQLException{
+        if(seatTextField.getText().isBlank()==false){
+            OnAction.addSeat(event, seatTextField.getText());
+        }else{
+           Alert alert = new Alert(Alert.AlertType.ERROR);
+           alert.setContentText("Please enter all the information");
+           alert.show(); 
+        }
+         
+    }
+    
+    public void removeButton(ActionEvent event) throws SQLException{
+        if(seatTextField.getText().isBlank()==false ){
+            OnAction.removeSeat(event, seatTextField.getText());
+        }else{
+           Alert alert = new Alert(Alert.AlertType.ERROR);
+           alert.setContentText("Please enter all the information");
+           alert.show(); 
+        }
     }
     
 }

@@ -119,6 +119,15 @@ public class staffController {
         stage.show(); 
         
     }
+     
+      public void seatIcon(MouseEvent event) throws IOException{
+        root = FXMLLoader.load(getClass().getResource("tableView3.fxml"));
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show(); 
+        
+    }
     
     
     

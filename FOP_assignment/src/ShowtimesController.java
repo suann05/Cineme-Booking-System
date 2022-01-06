@@ -4,6 +4,7 @@
  */
 
 
+
 import java.io.IOException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -11,6 +12,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.RadioButton;
 import javafx.scene.image.Image;
@@ -112,6 +114,11 @@ public class ShowtimesController {
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
+        
+        Alert alert1 = new Alert(Alert.AlertType.INFORMATION);
+        alert1.setHeaderText("Only guests from the same family and residence are allowed to sit in pairs");
+        alert1.setContentText("Please provide the identification before entering the hall");
+        alert1.show(); 
         }
     }
     

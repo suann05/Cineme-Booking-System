@@ -16,6 +16,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.stage.Stage;
 
 /**
@@ -230,9 +231,9 @@ public class OnAction {
             }else{
                    sum+=8;
                }
-               Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-               alert.setContentText("Total cost: RM"+sum);
-               alert.show(); 
+               Alert alert1 = new Alert(Alert.AlertType.CONFIRMATION);
+               alert1.setContentText("Total cost: RM"+sum);
+               alert1.show(); 
 
                preparedStatement = connection.prepareStatement("INSERT INTO seat(movie,date,time,seat) VALUES (?,?,?,?)");
                preparedStatement.setString(1, movie);
@@ -242,11 +243,12 @@ public class OnAction {
                int k = preparedStatement.executeUpdate();
                
                if(k==1){
-                   alert = new Alert(Alert.AlertType.CONFIRMATION);
+                   Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
                    alert.setContentText("THE SEAT ("+seat+") IS NOW RESERVED FOR YOU");
                    alert.show();
+                    
                }else{
-                   alert = new Alert(Alert.AlertType.ERROR);
+                   Alert alert = new Alert(Alert.AlertType.ERROR);
                    alert.setContentText("THERE IS AN ERROR");
                    alert.show();
                }

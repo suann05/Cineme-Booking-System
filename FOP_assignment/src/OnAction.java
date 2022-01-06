@@ -31,6 +31,14 @@ public class OnAction {
     static Scene scene;
     static Parent root;
     static int sum;
+
+    public static int getSum() {
+        return sum;
+    }
+
+    public static void setSum(int sum) {
+        OnAction.sum = sum;
+    }
     
     
      
@@ -652,7 +660,7 @@ public class OnAction {
     public static Connection getConnect1 (){
         Connection connection = null;
         try {
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/addfnb", "root", "root");
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/addfandb", "root", "root");
         } catch (SQLException ex) {
             Logger.getLogger(OnAction.class.getName()).log(Level.SEVERE, null, ex);
         }

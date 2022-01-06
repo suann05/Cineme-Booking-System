@@ -31,16 +31,16 @@ import javafx.stage.Stage;
  *
  * @author ngsua
  */
-public class tableviewController implements Initializable{
+public class tableviewController1 implements Initializable {
     
     @FXML
-    private TableView<Movie> tableView;
+    private TableView<Fnb> tableView1;
     @FXML
-    private TableColumn<Movie, String> nameCol;
+    private TableColumn<Fnb, String> nameCol;
     @FXML
-    private TableColumn<Movie, String> dateCol;
+    private TableColumn<Fnb, String> desCol;
     @FXML
-    private TableColumn<Movie, String> timeCol;
+    private TableColumn<Fnb, String> priceCol;
     
     private Stage stage;
     private Scene scene;
@@ -50,25 +50,25 @@ public class tableviewController implements Initializable{
     Connection connection = null ;
     PreparedStatement preparedStatement = null ;
     ResultSet resultSet = null ;
-    Movie movie = null ;
+    Fnb fnb = null ;
     
-    ObservableList<Movie>  movieList = FXCollections.observableArrayList();
+    ObservableList<Fnb>  fnbList = FXCollections.observableArrayList();
     
     public void refreshTable(){
          try {
-            movieList.clear();
+            fnbList.clear();
             
-            query = "SELECT * FROM movie";
+            query = "SELECT * FROM fandb";
             preparedStatement = connection.prepareStatement(query);
             resultSet = preparedStatement.executeQuery();
             
             while (resultSet.next()){
-                movieList.add(new Movie(
+                fnbList.add(new Fnb(
                         
                         resultSet.getString("name"),
-                        resultSet.getString("date"),
-                        resultSet.getString("time")));
-                tableView.setItems(movieList);
+                        resultSet.getString("des"),
+                        resultSet.getString("price")));
+                tableView1.setItems(fnbList);
                 
             }
             
@@ -85,13 +85,13 @@ public class tableviewController implements Initializable{
     
     public void loadDate(){
         
-        connection = OnAction.getConnect();
+        connection = OnAction.getConnect1();
         refreshTable();
         
         
         nameCol.setCellValueFactory(new PropertyValueFactory<>("name"));
-        dateCol.setCellValueFactory(new PropertyValueFactory<>("date"));
-        timeCol.setCellValueFactory(new PropertyValueFactory<>("time"));
+        desCol.setCellValueFactory(new PropertyValueFactory<>("des"));
+        priceCol.setCellValueFactory(new PropertyValueFactory<>("price"));
         
     }
     
@@ -102,4 +102,5 @@ public class tableviewController implements Initializable{
         stage.setScene(scene);
         stage.show();
     }
+    
 }

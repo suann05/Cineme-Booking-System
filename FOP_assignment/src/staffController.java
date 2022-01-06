@@ -11,6 +11,7 @@ import javafx.scene.control.RadioButton;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 /*
@@ -40,6 +41,7 @@ public class staffController {
     ImageView paymentIcon;
     @FXML
     ImageView fandbIcon;
+    
     
     private Stage stage;
     private Scene scene;
@@ -97,8 +99,31 @@ public class staffController {
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show(); 
-         
+        
     }
+    
+     public void fnbIcon(MouseEvent event) throws IOException{
+        root = FXMLLoader.load(getClass().getResource("tableView1.fxml"));
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show(); 
+        
+    }
+     
+     public void paymentIcon(MouseEvent event) throws IOException{
+        root = FXMLLoader.load(getClass().getResource("tableView2.fxml"));
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show(); 
+        
+    }
+    
+    
+    
+    
+    
     
     
     

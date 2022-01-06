@@ -68,7 +68,7 @@ public class bookingSeatController implements Initializable {
     private String[] movie1 = {"Spider Man","Venom","Eternals","Doctor Strange"};
     private String[] time1 = {"11:00","13:15","14:30","15:45","17:30"};
     private String[] date1 = {"3/1/2022","4/1/2022","5/1/2022","6/1/2022","7/1/2022"};
-    int sum=0;
+    double sum2=0;
     String seat = "";
     
     
@@ -188,6 +188,114 @@ public class bookingSeatController implements Initializable {
         
     }
     
+    public void seatCheckBox1(){
+        if(A1.isSelected())
+            sum2 += 8.00;
+        else if(A2.isSelected())
+            sum2 += 8.00;
+        else if(A3.isSelected())
+            sum2 += 8.00;
+        else if(A4.isSelected())
+            sum2 += 8.00;
+        else if(A5.isSelected())
+            sum2 += 8.00;
+        else if(A6.isSelected())
+            sum2 += 8.00;
+        else if(A7.isSelected())
+            sum2 += 8.00;
+        else if(A8.isSelected())
+            sum2 += 8.00;
+        else if(A9.isSelected())
+            sum2 += 8.00;
+        else if(A10.isSelected())
+            sum2 += 8.00;
+        else if(B1.isSelected())
+            sum2 += 8.00;
+        else if(B2.isSelected())
+            sum2 += 8.00;
+        else if(B3.isSelected())
+            sum2 += 8.00;
+        else if(B4.isSelected())
+            sum2 += 8.00;
+        else if(B5.isSelected())
+            sum2 += 8.00;
+        else if(B6.isSelected())
+            sum2 += 8.00;
+        else if(B7.isSelected())
+            sum2 += 8.00;
+        else if(B8.isSelected())
+            sum2 += 8.00;
+        else if(B9.isSelected())
+            sum2 += 8.00;
+        else if(B10.isSelected())
+            sum2 += 8.00;
+        else if(C1.isSelected())
+            sum2 += 8.00;
+        else if(C2.isSelected())
+            sum2 += 8.00;
+        else if(C3.isSelected())
+            sum2 += 8.00;
+        else if(C4.isSelected())
+            sum2 += 8.00;
+        else if(C5.isSelected())
+            sum2 += 8.00;
+        else if(C6.isSelected())
+            sum2 += 8.00;
+        else if(C7.isSelected())
+            sum2 += 8.00;
+        else if(C8.isSelected())
+            sum2 += 8.00;
+        else if(C9.isSelected())
+            sum2 += 8.00;
+        else if(C10.isSelected())
+            sum2 += 8.00;
+        else if(D1.isSelected())
+            sum2 += 10.00;
+        else if(D2.isSelected())
+            sum2 += 10.00;
+        else if(D3.isSelected())
+            sum2 += 10.00;
+        else if(D4.isSelected())
+            sum2 += 10.00;
+        else if(D5.isSelected())
+            sum2 += 10.00;
+        else if(D6.isSelected())
+            sum2 += 10.00;
+        else if(D7.isSelected())
+            sum2 += 10.00;
+        else if(D8.isSelected())
+            sum2 += 10.00;
+        else if(D9.isSelected())
+            sum2 += 10.00;
+        else if(D10.isSelected())
+            sum2 += 10.00;
+        else if(E1.isSelected())
+            sum2 += 10.00;
+        else if(E2.isSelected())
+            sum2 += 10.00;
+        else if(E3.isSelected())
+            sum2 += 10.00;
+        else if(E4.isSelected())
+            sum2 += 10.00;
+        else if(E5.isSelected())
+            sum2 += 10.00;
+        else if(E6.isSelected())
+            sum2 += 10.00;
+        else if(E7.isSelected())
+            sum2 += 10.00;
+        else if(E8.isSelected())
+            sum2 += 10.00;
+        else if(E9.isSelected())
+            sum2 += 10.00;
+        else if(E10.isSelected())
+            sum2 += 10.00;
+        
+        
+        
+        
+        
+    }
+    
     
     
     public void bookButton(ActionEvent event) {
@@ -282,7 +390,7 @@ public class bookingSeatController implements Initializable {
     }
     
      public void submitButton(){   
-        double total = sum0+sum1;
+        double total = sum0+sum1+sum2;
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setContentText("Total cost: RM"+total);
         alert.show();

@@ -31,16 +31,16 @@ import javafx.stage.Stage;
  *
  * @author ngsua
  */
-public class tableviewController implements Initializable{
+public class tableViewController2 implements Initializable {
     
     @FXML
-    private TableView<Movie> tableView;
+    private TableView<Price> tableView2;
     @FXML
-    private TableColumn<Movie, String> nameCol;
+    private TableColumn<Price, String> studentCol;
     @FXML
-    private TableColumn<Movie, String> dateCol;
+    private TableColumn<Price, String> classicCol;
     @FXML
-    private TableColumn<Movie, String> timeCol;
+    private TableColumn<Price, String> premiumCol;
     
     private Stage stage;
     private Scene scene;
@@ -50,25 +50,25 @@ public class tableviewController implements Initializable{
     Connection connection = null ;
     PreparedStatement preparedStatement = null ;
     ResultSet resultSet = null ;
-    Movie movie = null ;
+    Fnb fnb = null ;
     
-    ObservableList<Movie>  movieList = FXCollections.observableArrayList();
+    ObservableList<Price>  priceList = FXCollections.observableArrayList();
     
     public void refreshTable(){
          try {
-            movieList.clear();
+            priceList.clear();
             
-            query = "SELECT * FROM movie";
+            query = "SELECT * FROM payment";
             preparedStatement = connection.prepareStatement(query);
             resultSet = preparedStatement.executeQuery();
             
             while (resultSet.next()){
-                movieList.add(new Movie(
+                priceList.add(new Price(
                         
-                        resultSet.getString("name"),
-                        resultSet.getString("date"),
-                        resultSet.getString("time")));
-                tableView.setItems(movieList);
+                        resultSet.getString("studentP"),
+                        resultSet.getString("classicP"),
+                        resultSet.getString("premiumP")));
+                tableView2.setItems(priceList);
                 
             }
             
@@ -85,13 +85,13 @@ public class tableviewController implements Initializable{
     
     public void loadDate(){
         
-        connection = OnAction.getConnect();
+        connection = OnAction.getConnect2();
         refreshTable();
         
         
-        nameCol.setCellValueFactory(new PropertyValueFactory<>("name"));
-        dateCol.setCellValueFactory(new PropertyValueFactory<>("date"));
-        timeCol.setCellValueFactory(new PropertyValueFactory<>("time"));
+        studentCol.setCellValueFactory(new PropertyValueFactory<>("studentP"));
+        classicCol.setCellValueFactory(new PropertyValueFactory<>("classicP"));
+        premiumCol.setCellValueFactory(new PropertyValueFactory<>("premiumP"));
         
     }
     
@@ -102,4 +102,7 @@ public class tableviewController implements Initializable{
         stage.setScene(scene);
         stage.show();
     }
+    
 }
+    
+

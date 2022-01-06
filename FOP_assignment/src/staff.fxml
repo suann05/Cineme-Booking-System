@@ -9,7 +9,7 @@
 <AnchorPane id="AnchorPane" prefHeight="500.0" prefWidth="600.0" style="-fx-background-color: #FFF8F5;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="staffController">
    <children>
       <RadioButton layoutX="365.0" layoutY="108.0" mnemonicParsing="false" text="RadioButton" />
-      <ImageView fx:id="seatIcon" fitHeight="150.0" fitWidth="200.0" layoutX="352.0" layoutY="42.0" onMouseClicked="#seatIcon" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="seatIcon" fitHeight="150.0" fitWidth="200.0" layoutX="352.0" layoutY="42.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@seat.png" />
          </image></ImageView>
@@ -23,12 +23,12 @@
             <Font name="Comic Sans MS" size="13.0" />
          </font>
       </RadioButton>
-      <ImageView fx:id="paymentIcon" fitHeight="150.0" fitWidth="200.0" layoutX="104.0" layoutY="268.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="paymentIcon" fitHeight="150.0" fitWidth="200.0" layoutX="104.0" layoutY="268.0" onMouseClicked="#paymentIcon" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@payment.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="fandbIcon" fitHeight="150.0" fitWidth="200.0" layoutX="352.0" layoutY="268.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="fandbIcon" fitHeight="150.0" fitWidth="200.0" layoutX="352.0" layoutY="268.0" onMouseClicked="#fnbIcon" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@f&amp;b.png" />
          </image>

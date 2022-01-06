@@ -91,7 +91,7 @@ public class staffController {
         
     }
     
-    public void seatIcon(MouseEvent event) throws IOException{
+    public void movieIcon(MouseEvent event) throws IOException{
         root = FXMLLoader.load(getClass().getResource("tableView.fxml"));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);

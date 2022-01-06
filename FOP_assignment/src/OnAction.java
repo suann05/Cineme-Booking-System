@@ -648,6 +648,30 @@ public class OnAction {
             
             return  connection;
         }
+    
+    public static Connection getConnect1 (){
+        Connection connection = null;
+        try {
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/addfnb", "root", "root");
+        } catch (SQLException ex) {
+            Logger.getLogger(OnAction.class.getName()).log(Level.SEVERE, null, ex);
+        }
+            
+            return  connection;
+        }
+    
+    public static Connection getConnect2 (){
+        Connection connection = null;
+        try {
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/addpayment", "root", "root");
+        } catch (SQLException ex) {
+            Logger.getLogger(OnAction.class.getName()).log(Level.SEVERE, null, ex);
+        }
+            
+            return  connection;
+        }
+    
+    
 }
     
 

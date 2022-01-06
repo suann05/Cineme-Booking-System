@@ -13,7 +13,7 @@
          <image>
             <Image url="@seat.png" />
          </image></ImageView>
-      <ImageView fx:id="movieIcon" fitHeight="150.0" fitWidth="200.0" layoutX="104.0" layoutY="42.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="movieIcon" fitHeight="150.0" fitWidth="200.0" layoutX="104.0" layoutY="42.0" onMouseClicked="#movieIcon" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@movie.png" />
          </image>

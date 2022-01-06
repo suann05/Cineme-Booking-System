@@ -16,7 +16,10 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 /*
@@ -31,25 +34,33 @@ import javafx.stage.Stage;
 public class bookingSeatController implements Initializable {
     
     @FXML
-    ChoiceBox<String> movieChoiceBox;
+    private AnchorPane bookingSeatPage;
     @FXML
-    ChoiceBox<String> timeChoiceBox;
+    private AnchorPane bookingSeatPage2;
     @FXML
-    ChoiceBox<String> dateChoiceBox;
+    private ChoiceBox<String> movieChoiceBox;
     @FXML
-    Button bookButton;
+    private ChoiceBox<String> timeChoiceBox;
     @FXML
-    Button backButton;
+    private ChoiceBox<String> dateChoiceBox;
     @FXML
-    TextField billTextField;
+    private Button bookButton;
     @FXML
-    Button fandbButton;
+    private Button backButton;
     @FXML
-    CheckBox A1,A2,A3,A4,A5,A6,A7,A8,A9,A10,
+    private TextField billTextField;
+    @FXML
+    private Button proceedToFandB;
+    @FXML
+    private Button backToBookingSeat;
+
+    @FXML
+    private CheckBox A1,A2,A3,A4,A5,A6,A7,A8,A9,A10,
              B1,B2,B3,B4,B5,B6,B7,B8,B9,B10,
              C1,C2,C3,C4,C5,C6,C7,C8,C9,C10,
              D1,D2,D3,D4,D5,D6,D7,D8,D9,D10,
              E1,E2,E3,E4,E5,E6,E7,E8,E9,E10;
+    
     
     private Stage stage;
     private Scene scene;
@@ -59,7 +70,6 @@ public class bookingSeatController implements Initializable {
     private String[] date1 = {"3/1/2022","4/1/2022","5/1/2022","6/1/2022","7/1/2022"};
     int sum=0;
     String seat = "";
-    
     
     
     public void backButton(ActionEvent event) throws IOException{
@@ -318,17 +328,6 @@ public class bookingSeatController implements Initializable {
         
     }
     
-    public void fandbButton(ActionEvent event) throws IOException{
-        root = FXMLLoader.load(getClass().getResource("foodandBev.fxml"));
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
-    }
-    
-    
-
-
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         movieChoiceBox.getItems().addAll(movie1);
@@ -339,6 +338,78 @@ public class bookingSeatController implements Initializable {
         dateChoiceBox.setOnAction(this::bookButton);
     }
     
+    //FOOD & BEVERAGE PART
     
+    @FXML
+    private RadioButton food1,food2,food3,food4,food5,bev1,bev2,bev3,bev4,bev5;
+    @FXML
+    private Button submitButton;  
+    @FXML
+    private AnchorPane fnbAnchorPane;
+    @FXML
+    private AnchorPane paymentPage;        
+    @FXML
+    private Text foodLabel;
+    @FXML
+    private Button backToFandB;
+
+    
+    double sum0=0;
+    double sum1=0;
+   
+    public void getFood(ActionEvent event){
+        
+        if(food1.isSelected()){
+            sum0+=13.00;
+            
+        }    
+        else if(food2.isSelected())
+            sum0+=5.00;
+        else if(food3.isSelected())
+            sum0+=5.00;
+        else if(food4.isSelected())
+            sum0+=3.50;
+        else if(food5.isSelected())
+            sum0+=2.00;
+    }
+    
+    public void getBev(ActionEvent event){
+        
+        if(bev1.isSelected())
+            sum1+=5.00;
+        else if(bev2.isSelected())
+            sum1+=5.00;
+        else if(bev3.isSelected())
+           sum1+=7.00;
+        else if(bev4.isSelected())
+            sum1+=5.00;
+        else if(bev5.isSelected())
+            sum1+=5.00;
+    }
+    
+     public void submitButton(){   
+        double total = sum0+sum1;
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setContentText("Total cost: RM"+total);
+        alert.show();
+    }
+    
+    public void backToBookingSeat(){
+        bookingSeatPage.setVisible(true);
+        fnbAnchorPane.setVisible(false);
+        
+    }
+    public void showPaymentPage(){
+        paymentPage.setVisible(true);
+        fnbAnchorPane.setVisible(true);
+    }
+    public void showFandB(){
+        fnbAnchorPane.setVisible(true);
+    }
+    
+    public void backToFandB(){
+        paymentPage.setVisible(false);
+        fnbAnchorPane.setVisible(true);
+    }
     
 }

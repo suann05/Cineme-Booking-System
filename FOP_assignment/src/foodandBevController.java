@@ -20,18 +20,19 @@ import javafx.scene.text.Text;
 public class foodandBevController {
     
     @FXML
-    RadioButton food1,food2,food3,food4,food5,bev1,bev2,bev3,bev4,bev5;
+    private RadioButton food1,food2,food3,food4,food5,bev1,bev2,bev3,bev4,bev5;
     @FXML
-    Button submitButton;  
+    private Button submitButton;  
     @FXML
-    AnchorPane fnbAnchorPane;
+    private AnchorPane fnbAnchorPane;
     @FXML
-    AnchorPane paymentAnchorPane;        
+    private AnchorPane paymentPage;        
     @FXML
-    Text foodLabel;
+    private Text foodLabel;
     @FXML
-    Button skipButton;        
-    
+    private Button backToFandB;
+    @FXML
+    private Button proceed;
     
     double sum=0;
     double sum1=0;
@@ -70,13 +71,14 @@ public class foodandBevController {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setContentText("Total cost: RM"+total);
         alert.show();
-       
     }
-    
-    public void skipButton(){
-        paymentAnchorPane.setVisible(true);
-        fnbAnchorPane.setVisible(false);
-       
+    public void showPaymentPage(){
+        paymentPage.setVisible(true);
+        fnbAnchorPane.setVisible(true);
+        
     }
-    
+    public void backToFandB(){
+        paymentPage.setVisible(false);
+        fnbAnchorPane.setVisible(true);
+    }
 }

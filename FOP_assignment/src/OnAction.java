@@ -10,6 +10,8 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -635,6 +637,17 @@ public class OnAction {
             
         }
     }
+    
+    public static Connection getConnect (){
+        Connection connection = null;
+        try {
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/addmovie", "root", "root");
+        } catch (SQLException ex) {
+            Logger.getLogger(OnAction.class.getName()).log(Level.SEVERE, null, ex);
+        }
+            
+            return  connection;
+        }
 }
     
 

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane id="AnchorPane" prefHeight="500.0" prefWidth="600.0" style="-fx-background-color: #FFF8F5;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tableviewController">
+   <children>
+      <TableView fx:id="tableView" layoutX="187.0" layoutY="150.0" prefHeight="200.0" prefWidth="226.0">
+        <columns>
+          <TableColumn fx:id="nameCol" prefWidth="75.0" text="NAME" />
+          <TableColumn fx:id="dateCol" prefWidth="75.0" text="DATE" />
+            <TableColumn fx:id="timeCol" prefWidth="75.0" text="TIME" />
+        </columns>
+      </TableView>
+      <Button fx:id="refreshButton" layoutX="274.0" layoutY="389.0" mnemonicParsing="false" onAction="#refreshTable" text="Refresh" />
+   </children>
+</AnchorPane>

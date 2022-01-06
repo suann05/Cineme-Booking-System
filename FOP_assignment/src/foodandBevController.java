@@ -3,7 +3,10 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.text.Text;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -19,8 +22,15 @@ public class foodandBevController {
     @FXML
     RadioButton food1,food2,food3,food4,food5,bev1,bev2,bev3,bev4,bev5;
     @FXML
-    Button submitButton;   
-    
+    Button submitButton;  
+    @FXML
+    AnchorPane fnbAnchorPane;
+    @FXML
+    AnchorPane paymentAnchorPane;        
+    @FXML
+    Text foodLabel;
+    @FXML
+    Button skipButton;        
     
     
     double sum=0;
@@ -28,8 +38,10 @@ public class foodandBevController {
    
     public void getFood(ActionEvent event){
         
-        if(food1.isSelected())
+        if(food1.isSelected()){
             sum+=13.00;
+            
+        }    
         else if(food2.isSelected())
             sum+=5.00;
         else if(food3.isSelected())
@@ -58,6 +70,12 @@ public class foodandBevController {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setContentText("Total cost: RM"+total);
         alert.show();
+       
+    }
+    
+    public void skipButton(){
+        paymentAnchorPane.setVisible(true);
+        fnbAnchorPane.setVisible(false);
        
     }
     

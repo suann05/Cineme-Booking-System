@@ -26,7 +26,7 @@ public class FXMain extends Application {
     @Override
     public void start(Stage primaryStage) {
         try{
-        Parent root = FXMLLoader.load(getClass().getResource("login.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("foodandBev.fxml"));
         Scene scene = new Scene(root);
         Image icon = new Image("cinema.png");
         primaryStage.getIcons().add(icon);
@@ -49,7 +49,7 @@ public class FXMain extends Application {
         
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Logout");
-        alert.setContentText("Are you sure you want to logout?");
+        alert.setContentText("Are you sure you want to log out?");
         
         
         if(alert.showAndWait().get()==ButtonType.OK){

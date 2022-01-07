@@ -340,8 +340,7 @@ public class bookingSeatController implements Initializable {
         dateChoiceBox.setOnAction(this::bookButton);
     }
     
-    //FOOD & BEVERAGE PART
-    
+    //F&B
     @FXML
     private RadioButton food1,food2,food3,food4,food5,bev1,bev2,bev3,bev4,bev5;
     @FXML
@@ -354,7 +353,20 @@ public class bookingSeatController implements Initializable {
     private Text foodLabel;
     @FXML
     private Button backToFandB;
-
+    
+    //payment page
+    @FXML
+    private TextField cardNumberTextField;
+    @FXML
+    private TextField cvvTextField;
+    @FXML
+    private TextField expiryDateTextField;
+    @FXML
+    private TextField nameOnCardTextField;
+    @FXML
+    private TextField studentIdTextField;
+    @FXML
+    private Button showTicket;
     
     double sum0=0;
     double sum1=0;
@@ -390,11 +402,17 @@ public class bookingSeatController implements Initializable {
             sum1+=5.00;
     }
     
-     public void submitButton(){   
-        double total1 = total+sum2;
-        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-        alert.setContentText("Total cost: RM"+total1);
-        alert.show();
+    public void submitButton(){   
+         if(cardNumberTextField.getText().isBlank()==false && cvvTextField.getText().isBlank()==false && expiryDateTextField.getText().isBlank()==false && nameOnCardTextField.getText().isBlank()==false){
+             double total1 = total+sum2;
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setContentText("Total cost: RM"+total1);
+            alert.show();
+    }else{
+          Alert alert = new Alert(Alert.AlertType.ERROR);
+          alert.setContentText("Please enter your card details");
+          alert.show();   
+         }
     }
      
      public void submitButton1(){   

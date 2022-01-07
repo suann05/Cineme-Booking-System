@@ -38,6 +38,8 @@ public class signupController {
     @FXML
     TextField passwordTextField;
     @FXML
+    TextField studentTextField;
+    @FXML
     ImageView icon;
     
     private Stage stage;
@@ -57,9 +59,12 @@ public class signupController {
     
     public void submitButtonOnAction(ActionEvent event) throws SQLException, IOException{
         
-        if(usernameTextField.getText().isBlank()==false && passwordTextField.getText().isBlank()==false && mobileTextField.getText().isBlank()==false && emailTextField.getText().isBlank()==false ){
+        if(usernameTextField.getText().isBlank()==false && passwordTextField.getText().isBlank()==false && mobileTextField.getText().isBlank()==false && emailTextField.getText().isBlank()==false && studentTextField.getText().isBlank()==true ){
                
                OnAction.signupUser(event, usernameTextField.getText(), mobileTextField.getText(),emailTextField.getText(),passwordTextField.getText());
+        }
+        else if(usernameTextField.getText().isBlank()==false && passwordTextField.getText().isBlank()==false && mobileTextField.getText().isBlank()==false && emailTextField.getText().isBlank()==false && studentTextField.getText().isBlank()==false){
+               OnAction.signupUser1(event, usernameTextField.getText(), mobileTextField.getText(),emailTextField.getText(),passwordTextField.getText(),studentTextField.getText());
         }else{
             System.out.println("Please fill up all the information");
             Alert alert = new Alert(Alert.AlertType.ERROR);

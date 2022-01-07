@@ -1,6 +1,11 @@
 
+;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
@@ -371,6 +376,7 @@ public class bookingSeatController implements Initializable {
     double sum0=0;
     double sum1=0;
     double total;
+    static double total1;
    
     public void getFood(ActionEvent event){
         
@@ -402,13 +408,74 @@ public class bookingSeatController implements Initializable {
             sum1+=5.00;
     }
     
-    public void submitButton(){   
-         if(cardNumberTextField.getText().isBlank()==false && cvvTextField.getText().isBlank()==false && expiryDateTextField.getText().isBlank()==false && nameOnCardTextField.getText().isBlank()==false){
-             double total1 = total+sum2;
+    public static void checkStudent(ActionEvent event,String studentID)throws SQLException, IOException{
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet2 = null;
+        
+        try{
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/javafx-loginsigup", "root", "root");
+            preparedStatement = connection.prepareStatement("SELECT password FROM users WHERE studentID = ?");
+            preparedStatement.setString(1, studentID);
+            resultSet2 = preparedStatement.executeQuery();
+            
+            if(!(resultSet2.isBeforeFirst())){
+                
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setContentText("Student ID not found");
+                alert.show();
+            }
+            else{
+                while(resultSet2.next()){
+                      
+                    total1=total1*0.75;
+                    Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+                    alert.setContentText("Total cost: RM"+total1+"\nPayment successfully. Thank you for your purchasing");
+                    alert.show();
+                        
+                    }
+                }
+            
+            
+        }catch(SQLException e){
+            e.printStackTrace();
+        } finally{
+            if(resultSet2!=null){
+                try{
+                    resultSet2.close();
+                }catch(SQLException e){
+                    e.printStackTrace();
+                }
+            }
+            if(preparedStatement!=null){
+                try{
+                    preparedStatement.close();
+                }catch(SQLException e){
+                    e.printStackTrace();
+                }
+            }
+            if(connection!=null){
+                try{
+                    connection.close();
+                }catch(SQLException e){
+                    e.printStackTrace();
+                }
+            }
+            
+        }
+    }
+    
+    public void submitButton(ActionEvent event) throws SQLException, IOException{
+        total1 = total+sum2;
+         if(cardNumberTextField.getText().isBlank()==false && cvvTextField.getText().isBlank()==false && expiryDateTextField.getText().isBlank()==false && nameOnCardTextField.getText().isBlank()==false && studentIdTextField.getText().isBlank()==true){
+            
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-            alert.setContentText("Total cost: RM"+total1);
+            alert.setContentText("Total cost: RM"+total1+"\nPayment successfully. Thank you for your purchasing");
             alert.show();
-    }else{
+    }
+         else if(cardNumberTextField.getText().isBlank()==false && cvvTextField.getText().isBlank()==false && expiryDateTextField.getText().isBlank()==false && nameOnCardTextField.getText().isBlank()==false && studentIdTextField.getText().isBlank()==false){
+              checkStudent(event,studentIdTextField.getText());
+         }else{
           Alert alert = new Alert(Alert.AlertType.ERROR);
           alert.setContentText("Please enter your card details");
           alert.show();   

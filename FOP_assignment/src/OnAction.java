@@ -75,7 +75,7 @@ public class OnAction {
         PreparedStatement psCheckUserExists = null;
         PreparedStatement psCheckUserExists1 = null;
         ResultSet resultSet = null;
-        //ResultSet resultSet1 = null;
+        
         
         try{
             connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/javafx-loginsigup", "root", "root");
@@ -84,7 +84,7 @@ public class OnAction {
             psCheckUserExists.setString(1, username);
             psCheckUserExists1.setString(1, email);
             resultSet = psCheckUserExists.executeQuery();
-            //resultSet1 = psCheckUserExists.executeQuery();
+            
             
             if(resultSet.isBeforeFirst()){
                 System.out.println("User already exists");
@@ -93,13 +93,7 @@ public class OnAction {
                 alert.show();
                 
             }
-            /*else if(resultSet1.isBeforeFirst()){
-                System.out.println("Email already exists");
-                Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.setContentText("You cannot use this email");
-                alert.show();
-            }
-*/
+            
             
             else{
                 psInsert = connection.prepareStatement("INSERT INTO users(username,`mobile number`,email,password) VALUES (?,?,?,?)");
@@ -116,7 +110,82 @@ public class OnAction {
             if(resultSet != null){
                 try{
                 resultSet.close();
-                //resultSet1.close();
+                }catch(SQLException e){
+                    e.printStackTrace();
+                }
+            }
+            if(psCheckUserExists != null && psCheckUserExists1 != null ){
+                try{
+                psCheckUserExists.close();
+                psCheckUserExists1.close();
+                }catch(SQLException e){
+                    e.printStackTrace();
+            
+        }
+    }
+            if(psInsert != null && psInsert1 != null ){
+                try{
+                psInsert.close();
+                psInsert1.close();
+                }catch(SQLException e){
+                    e.printStackTrace();
+            
+        }
+    }
+            if(connection!=null){
+                try{
+                connection.close();
+                }catch(SQLException e){
+                    e.printStackTrace();
+            
+        }
+    }
+        }
+    }
+    
+    public static void signupUser1(ActionEvent event, String username, String mobile, String email , String password,String studentID) throws SQLException{
+        Connection connection = null;
+        PreparedStatement psInsert = null;
+        PreparedStatement psInsert1 = null;
+        PreparedStatement psCheckUserExists = null;
+        PreparedStatement psCheckUserExists1 = null;
+        ResultSet resultSet = null;
+        
+        
+        try{
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/javafx-loginsigup", "root", "root");
+            psCheckUserExists = connection.prepareStatement("SELECT * FROM users WHERE username = ?");
+            psCheckUserExists1 = connection.prepareStatement("SELECT * FROM users WHERE email = ?");
+            psCheckUserExists.setString(1, username);
+            psCheckUserExists1.setString(1, email);
+            resultSet = psCheckUserExists.executeQuery();
+            
+            
+            if(resultSet.isBeforeFirst()){
+                System.out.println("User already exists");
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setContentText("You cannot use this username");
+                alert.show();
+                
+            }
+            
+            
+            else{
+                psInsert = connection.prepareStatement("INSERT INTO users(username,`mobile number`,email,password,studentID) VALUES (?,?,?,?,?)");
+                psInsert.setString(1, username);
+                psInsert.setString(2, mobile);
+                psInsert.setString(3, email);
+                psInsert.setString(4, password);
+                psInsert.setString(5, studentID);
+                psInsert.executeUpdate();
+                
+            }
+        } catch(SQLException e){
+            e.printStackTrace();
+        } finally{
+            if(resultSet != null){
+                try{
+                resultSet.close();
                 }catch(SQLException e){
                     e.printStackTrace();
                 }
@@ -804,6 +873,8 @@ public class OnAction {
             
         }
     }
+    
+    
     
     
     

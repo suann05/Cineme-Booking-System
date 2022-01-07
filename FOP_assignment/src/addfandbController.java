@@ -68,7 +68,7 @@ public class addfandbController {
     }
     
     public void removeButton(ActionEvent event){
-        if(foodTextField.getText().isBlank()==false && desTextField.getText().isBlank()==true && priceTextField.getText().isBlank()==true ){
+        if(foodTextField.getText().isBlank()==false && desTextField.getText().isBlank()==false && priceTextField.getText().isBlank()==false ){
            OnAction.removefandb(event, foodTextField.getText());
         
           

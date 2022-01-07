@@ -73,7 +73,7 @@ public class bookingSeatController implements Initializable {
     private String[] movie1 = {"Spider Man","Venom","Eternals","Doctor Strange"};
     private String[] time1 = {"11:00","13:15","14:30","15:45","17:30"};
     private String[] date1 = {"3/1/2022","4/1/2022","5/1/2022","6/1/2022","7/1/2022"};
-    double sum2=0;
+    static double sum2=0;
     String seat = "";
     
     
@@ -375,7 +375,7 @@ public class bookingSeatController implements Initializable {
     
     double sum0=0;
     double sum1=0;
-    double total;
+    static double total;
     static double total1;
    
     public void getFood(ActionEvent event){
@@ -426,8 +426,8 @@ public class bookingSeatController implements Initializable {
                 alert.show();
             }
             else{
-                while(resultSet2.next()){
-                      
+                if(resultSet2.next()){
+                    total1 = total+sum2;  
                     total1=total1*0.75;
                     Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
                     alert.setContentText("Total cost: RM"+total1+"\nPayment successfully. Thank you for your purchasing");
@@ -466,9 +466,9 @@ public class bookingSeatController implements Initializable {
     }
     
     public void submitButton(ActionEvent event) throws SQLException, IOException{
-        total1 = total+sum2;
+        
          if(cardNumberTextField.getText().isBlank()==false && cvvTextField.getText().isBlank()==false && expiryDateTextField.getText().isBlank()==false && nameOnCardTextField.getText().isBlank()==false && studentIdTextField.getText().isBlank()==true){
-            
+            total1 = total+sum2;
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
             alert.setContentText("Total cost: RM"+total1+"\nPayment successfully. Thank you for your purchasing");
             alert.show();

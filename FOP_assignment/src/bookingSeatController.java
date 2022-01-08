@@ -72,7 +72,7 @@ public class bookingSeatController implements Initializable {
     private Parent root;
     private String[] movie1 = {"Spider Man","Venom","Eternals","Doctor Strange"};
     private String[] time1 = {"11:00","13:15","14:30","15:45","17:30"};
-    private String[] date1 = {"3/1/2022","4/1/2022","5/1/2022","6/1/2022","7/1/2022"};
+    private String[] date1 = {"3/2/2022","4/2/2022","5/2/2022","6/2/2022","7/2/2022"};
     static double sum2=0;
     String seat = "";
     

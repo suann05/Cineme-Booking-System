@@ -9,12 +9,13 @@
  */
 public class Price {
     
-    String studentP,classicP,premiumP;
+    String studentP,classicP,premiumP,date;
 
-    public Price(String studentP, String classicP, String premiumP) {
+    public Price(String studentP, String classicP, String premiumP,String date) {
         this.studentP = studentP;
         this.classicP = classicP;
         this.premiumP = premiumP;
+        this.date=date;
     }
 
     public String getStudentP() {
@@ -40,6 +41,16 @@ public class Price {
     public void setPremiumP(String premiumP) {
         this.premiumP = premiumP;
     }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+    
+    
     
     
     

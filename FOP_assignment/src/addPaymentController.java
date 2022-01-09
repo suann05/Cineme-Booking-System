@@ -30,6 +30,8 @@ public class addPaymentController {
     @FXML
     private TextField premiumTextField;
     @FXML
+    private TextField dateTextField;
+    @FXML
     private Button backButton;
     @FXML
     private Button submitButton;
@@ -48,8 +50,8 @@ public class addPaymentController {
     
     public void submitButton(ActionEvent event) throws SQLException{
         
-        if(studentTextField.getText().isBlank()==false && classicTextField.getText().isBlank()==false && premiumTextField.getText().isBlank()==false ){
-           OnAction.addPayment(event, studentTextField.getText(), classicTextField.getText(), premiumTextField.getText());
+        if(studentTextField.getText().isBlank()==false && classicTextField.getText().isBlank()==false && premiumTextField.getText().isBlank()==false && dateTextField.getText().isBlank()==false ){
+           OnAction.addPayment(event, studentTextField.getText(), classicTextField.getText(), premiumTextField.getText(),dateTextField.getText());
         }else{
            Alert alert = new Alert(Alert.AlertType.ERROR);
            alert.setContentText("Please enter all the information");

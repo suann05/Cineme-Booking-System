@@ -18,25 +18,30 @@
             <Font name="Comic Sans MS" size="12.0" />
          </font>
       </Button>
-      <TextField fx:id="studentTextField" layoutX="210.0" layoutY="161.0" promptText="Student Price(RM)">
+      <TextField fx:id="studentTextField" layoutX="210.0" layoutY="134.0" promptText="Student Price(RM)">
          <font>
             <Font name="Comic Sans MS" size="13.0" />
          </font>
       </TextField>
-      <TextField fx:id="classicTextField" layoutX="211.0" layoutY="236.0" promptText="Classic(RM)">
+      <TextField fx:id="classicTextField" layoutX="211.0" layoutY="209.0" promptText="Classic(RM)">
          <font>
             <Font name="Comic Sans MS" size="13.0" />
          </font>
       </TextField>
-      <TextField fx:id="premiumTextField" layoutX="211.0" layoutY="312.0" promptText="Premium(RM)">
+      <TextField fx:id="premiumTextField" layoutX="211.0" layoutY="285.0" promptText="Premium(RM)">
          <font>
             <Font name="Comic Sans MS" size="13.0" />
          </font>
       </TextField>
-      <Button fx:id="submitButton" layoutX="272.0" layoutY="402.0" mnemonicParsing="false" onAction="#submitButton" style="-fx-background-color: #193A6F;" text="Submit" textFill="#f98125">
+      <Button fx:id="submitButton" layoutX="272.0" layoutY="434.0" mnemonicParsing="false" onAction="#submitButton" style="-fx-background-color: #193A6F;" text="Submit" textFill="#f98125">
          <font>
             <Font name="Comic Sans MS" size="12.0" />
          </font>
       </Button>
+      <TextField fx:id="dateTextField" layoutX="210.0" layoutY="361.0" promptText="Date updated(1/1/2022)">
+         <font>
+            <Font name="Comic Sans MS" size="13.0" />
+         </font>
+      </TextField>
    </children>
 </AnchorPane>

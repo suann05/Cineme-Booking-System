@@ -41,6 +41,8 @@ public class tableViewController2 implements Initializable {
     private TableColumn<Price, String> classicCol;
     @FXML
     private TableColumn<Price, String> premiumCol;
+    @FXML
+    private TableColumn<Price, String> dateCol;
     
     private Stage stage;
     private Scene scene;
@@ -50,7 +52,7 @@ public class tableViewController2 implements Initializable {
     Connection connection = null ;
     PreparedStatement preparedStatement = null ;
     ResultSet resultSet = null ;
-    Fnb fnb = null ;
+    Price price = null ;
     
     ObservableList<Price>  priceList = FXCollections.observableArrayList();
     
@@ -67,7 +69,9 @@ public class tableViewController2 implements Initializable {
                         
                         resultSet.getString("studentP"),
                         resultSet.getString("classicP"),
-                        resultSet.getString("premiumP")));
+                        resultSet.getString("premiumP"),
+                        resultSet.getString("DateUpdated")));
+                      
                 tableView2.setItems(priceList);
                 
             }
@@ -92,6 +96,7 @@ public class tableViewController2 implements Initializable {
         studentCol.setCellValueFactory(new PropertyValueFactory<>("studentP"));
         classicCol.setCellValueFactory(new PropertyValueFactory<>("classicP"));
         premiumCol.setCellValueFactory(new PropertyValueFactory<>("premiumP"));
+        dateCol.setCellValueFactory(new PropertyValueFactory<>("date"));
         
     }
     

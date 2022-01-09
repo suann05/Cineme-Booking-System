@@ -644,7 +644,7 @@ public class OnAction {
         }
     }
     
-    public static void addPayment(ActionEvent event,String studentP,String classicP,String premiumP)throws SQLException{
+    public static void addPayment(ActionEvent event,String studentP,String classicP,String premiumP,String date)throws SQLException{
         
         Connection connection = null;
         PreparedStatement preparedStatement = null;
@@ -652,10 +652,11 @@ public class OnAction {
         
         try{
             connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/addpayment", "root", "root");
-            preparedStatement = connection.prepareStatement("SELECT * FROM payment WHERE studentP = ? and classicP = ? and premiumP=?");
+            preparedStatement = connection.prepareStatement("SELECT * FROM payment WHERE studentP = ? and classicP = ? and premiumP=? and DateUpdated=?");
             preparedStatement.setString(1, studentP);
             preparedStatement.setString(2, classicP);
             preparedStatement.setString(3, premiumP);
+            preparedStatement.setString(4, date);
             
             resultSet = preparedStatement.executeQuery();
             
@@ -668,10 +669,11 @@ public class OnAction {
             else{
               
 
-               preparedStatement = connection.prepareStatement("INSERT INTO payment(studentP,classicP,premiumP) VALUES (?,?,?)");
+               preparedStatement = connection.prepareStatement("INSERT INTO payment(studentP,classicP,premiumP,DateUpdated) VALUES (?,?,?,?)");
                preparedStatement.setString(1, studentP);
                preparedStatement.setString(2, classicP);
                preparedStatement.setString(3, premiumP);
+               preparedStatement.setString(4, date);
                
                int k = preparedStatement.executeUpdate();
                

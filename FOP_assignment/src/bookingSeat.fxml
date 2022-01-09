@@ -179,82 +179,82 @@
       </Button>
       <AnchorPane fx:id="bookingSeatPage2" layoutX="53.0" layoutY="117.0" prefHeight="322.0" prefWidth="506.0" style="-fx-background-color: #FFF8F5; -fx-border-color: #2B5A9E; -fx-border-width: 2px;">
          <children>
-            <Label layoutX="120.0" layoutY="14.0" text="2" textFill="#193a6f">
+            <Label layoutX="120.0" layoutY="283.0" text="2" textFill="#193a6f">
                <font>
                   <Font name="Comic Sans MS" size="12.0" />
                </font>
             </Label>
-            <Label layoutX="155.0" layoutY="14.0" text="3" textFill="#193a6f">
+            <Label layoutX="155.0" layoutY="283.0" text="3" textFill="#193a6f">
                <font>
                   <Font name="Comic Sans MS" size="12.0" />
                </font>
             </Label>
-            <Label layoutX="272.0" layoutY="14.0" text="6" textFill="#193a6f">
+            <Label layoutX="272.0" layoutY="283.0" text="6" textFill="#193a6f">
                <font>
                   <Font name="Comic Sans MS" size="12.0" />
                </font>
             </Label>
-            <Label layoutX="233.0" layoutY="14.0" text="5" textFill="#193a6f">
+            <Label layoutX="233.0" layoutY="283.0" text="5" textFill="#193a6f">
                <font>
                   <Font name="Comic Sans MS" size="12.0" />
                </font>
             </Label>
-            <Label layoutX="193.0" layoutY="14.0" text="4" textFill="#193a6f">
+            <Label layoutX="193.0" layoutY="283.0" text="4" textFill="#193a6f">
                <font>
                   <Font name="Comic Sans MS" size="12.0" />
                </font>
             </Label>
-            <Label layoutX="81.0" layoutY="14.0" text="1" textFill="#193a6f">
+            <Label layoutX="81.0" layoutY="283.0" text="1" textFill="#193a6f">
                <font>
                   <Font name="Comic Sans MS" size="12.0" />
                </font>
             </Label>
-            <Label layoutX="306.0" layoutY="14.0" text="7" textFill="#193a6f">
+            <Label layoutX="306.0" layoutY="283.0" text="7" textFill="#193a6f">
                <font>
                   <Font name="Comic Sans MS" size="12.0" />
                </font>
             </Label>
-            <Label layoutX="344.0" layoutY="14.0" text="8" textFill="#193a6f">
+            <Label layoutX="344.0" layoutY="283.0" text="8" textFill="#193a6f">
                <font>
                   <Font name="Comic Sans MS" size="12.0" />
                </font>
             </Label>
-            <Label layoutX="386.0" layoutY="14.0" text="9" textFill="#193a6f">
+            <Label layoutX="386.0" layoutY="283.0" text="9" textFill="#193a6f">
                <font>
                   <Font name="Comic Sans MS" size="12.0" />
                </font>
             </Label>
-            <Label layoutX="421.0" layoutY="14.0" text="10" textFill="#193a6f">
+            <Label layoutX="421.0" layoutY="283.0" text="10" textFill="#193a6f">
                <font>
                   <Font name="Comic Sans MS" size="12.0" />
                </font>
             </Label>
-            <Label layoutX="233.0" layoutY="283.0" text="SCREEN" textFill="#193a6f">
+            <Label layoutX="229.0" layoutY="14.0" text="SCREEN" textFill="#193a6f">
                <font>
                   <Font name="Comic Sans MS" size="12.0" />
                </font>
             </Label>
-            <Label layoutX="23.0" layoutY="61.0" text="A" textFill="#193a6f">
+            <Label layoutX="31.0" layoutY="61.0" text="A" textFill="#193a6f">
                <font>
                   <Font name="Comic Sans MS" size="12.0" />
                </font>
             </Label>
-            <Label layoutX="23.0" layoutY="107.0" text="B" textFill="#193a6f">
+            <Label layoutX="31.0" layoutY="107.0" text="B" textFill="#193a6f">
                <font>
                   <Font name="Comic Sans MS" size="12.0" />
                </font>
             </Label>
-            <Label layoutX="23.0" layoutY="152.0" text="C" textFill="#193a6f">
+            <Label layoutX="31.0" layoutY="152.0" text="C" textFill="#193a6f">
                <font>
                   <Font name="Comic Sans MS" size="12.0" />
                </font>
             </Label>
-            <Label layoutX="23.0" layoutY="193.0" text="D" textFill="#193a6f">
+            <Label layoutX="31.0" layoutY="193.0" text="D" textFill="#193a6f">
                <font>
                   <Font name="Comic Sans MS" size="12.0" />
                </font>
             </Label>
-            <Label layoutX="24.0" layoutY="239.0" text="E" textFill="#193a6f">
+            <Label layoutX="32.0" layoutY="239.0" text="E" textFill="#193a6f">
                <font>
                   <Font name="Comic Sans MS" size="12.0" />
                </font>

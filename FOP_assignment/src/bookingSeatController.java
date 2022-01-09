@@ -488,8 +488,7 @@ public class bookingSeatController implements Initializable {
     public void getFood(ActionEvent event){
         
         if(food1.isSelected()){
-            sum0+=13.00;
-            
+            sum0+=13.00; 
         }    
         else if(food2.isSelected())
             sum0+=5.00;

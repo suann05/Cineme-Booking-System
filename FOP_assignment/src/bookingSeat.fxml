@@ -311,7 +311,7 @@
             <CheckBox fx:id="E10" layoutX="420.0" layoutY="239.0" mnemonicParsing="false" onAction="#seatCheckBox1" />
          </children>
       </AnchorPane>
-      <AnchorPane id="AnchorPane" fx:id="fnbAnchorPane" layoutX="10.0" layoutY="10.0" prefHeight="500.0" prefWidth="600.0" style="-fx-background-color: #FFF8F5;">
+      <AnchorPane id="AnchorPane" fx:id="fnbAnchorPane" layoutX="10.0" layoutY="10.0" prefHeight="500.0" prefWidth="600.0" style="-fx-background-color: #FFF8F5;" visible="false">
          <children>
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f1c2a0" height="85.0" layoutX="478.0" layoutY="331.0" stroke="#f1c2a0" strokeType="INSIDE" width="112.0" />
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f1c2a0" height="85.0" layoutX="361.0" layoutY="331.0" stroke="#f1c2a0" strokeType="INSIDE" width="112.0" />
@@ -483,6 +483,11 @@
                   <Font name="Comic Sans MS" size="12.0" />
                </font>
             </Button>
+            <Label layoutX="272.0" layoutY="310.0" text="(Regular)" textFill="#193a6f">
+               <font>
+                  <Font name="Comic Sans MS" size="12.0" />
+               </font>
+            </Label>
             <AnchorPane fx:id="paymentPage" layoutX="-2.0" prefHeight="500.0" prefWidth="600.0" style="-fx-background-color: #FFF8F5;" visible="false">
                <children>
                   <Button fx:id="submitButton1" layoutX="259.0" layoutY="413.0" mnemonicParsing="false" onAction="#submitButton" style="-fx-background-color: #193A6F;" text="Pay Now" textFill="#f98125">
@@ -611,11 +616,6 @@
                   </AnchorPane>
                </children>
             </AnchorPane>
-            <Label layoutX="272.0" layoutY="310.0" text="(Regular)" textFill="#193a6f">
-               <font>
-                  <Font name="Comic Sans MS" size="12.0" />
-               </font>
-            </Label>
          </children>
       </AnchorPane>
    </children>

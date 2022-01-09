@@ -1,6 +1,7 @@
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.regex.Pattern;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -59,23 +60,38 @@ public class signupController {
     
     public void submitButtonOnAction(ActionEvent event) throws SQLException, IOException{
         
+        boolean checkEmail,checkMobile;
+        Pattern pt = Pattern.compile("^[_A-Za-z0-9-]+@[A-Za-z0-9-]+.[.A-Za-z]{2,}$");
+        Pattern pt1 = Pattern.compile("^01\\d-\\d{7,8}$");
+        checkEmail = (pt.matcher(emailTextField.getText())).matches();
+        checkMobile = (pt1.matcher(mobileTextField.getText())).matches();
+        
         if(usernameTextField.getText().isBlank()==false && passwordTextField.getText().isBlank()==false && mobileTextField.getText().isBlank()==false && emailTextField.getText().isBlank()==false && studentTextField.getText().isBlank()==true ){
-               
-               OnAction.signupUser(event, usernameTextField.getText(), mobileTextField.getText(),emailTextField.getText(),passwordTextField.getText());
-        }
-        else if(usernameTextField.getText().isBlank()==false && passwordTextField.getText().isBlank()==false && mobileTextField.getText().isBlank()==false && emailTextField.getText().isBlank()==false && studentTextField.getText().isBlank()==false){
+            if(checkEmail == true && checkMobile==true){
+                OnAction.signupUser(event, usernameTextField.getText(), mobileTextField.getText(),emailTextField.getText(),passwordTextField.getText());
+                OnAction.changeScene(event, usernameTextField.getText(), "login.fxml");
+            }else{
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setContentText("Invalid email or mobile number. Please try again");
+                alert.show();  
+            }
+        }else if(usernameTextField.getText().isBlank()==false && passwordTextField.getText().isBlank()==false && mobileTextField.getText().isBlank()==false && emailTextField.getText().isBlank()==false && studentTextField.getText().isBlank()==false){
+                if(checkEmail == true && checkMobile==true){
                OnAction.signupUser1(event, usernameTextField.getText(), mobileTextField.getText(),emailTextField.getText(),passwordTextField.getText(),studentTextField.getText());
+               OnAction.changeScene(event, usernameTextField.getText(), "login.fxml");
+                }else{
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setContentText("Invalid email or mobile number. Please try again");
+            alert.show();  
+            }
         }else{
             System.out.println("Please fill up all the information");
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setContentText("Please fill up all the information to sign up");
             alert.show();
         }
-        root = FXMLLoader.load(getClass().getResource("login.fxml"));
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+            
+       
         
     
 

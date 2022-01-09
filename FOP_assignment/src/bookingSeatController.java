@@ -685,26 +685,31 @@ public class bookingSeatController implements Initializable {
     
     public void submitButton(ActionEvent event) throws SQLException, IOException{
         
-        boolean checkCardNo,checkCardHolder;
+        boolean checkCardNo,checkCardHolder,checkCVV,checkExpiryDate;
         Pattern pt = Pattern.compile("^[0-9]{4} [0-9]{4} [0-9]{4} [0-9]{4}$");
         Pattern pt1 = Pattern.compile("^[a-zA-z\' ,.-]+$");
+        Pattern pt2 = Pattern.compile("^[0-9]{3}$");
+        Pattern pt3 = Pattern.compile("^[0-9/]{5}");
+        
         checkCardNo = (pt.matcher(cardNumberTextField.getText())).matches();
         checkCardHolder = (pt1.matcher(nameOnCardTextField.getText())).matches();
+        checkCVV  = (pt2.matcher(cvvTextField.getText())).matches();
+        checkExpiryDate = (pt3.matcher(expiryDateTextField.getText())).matches();
         
          if(cardNumberTextField.getText().isBlank()==false && cvvTextField.getText().isBlank()==false && expiryDateTextField.getText().isBlank()==false && nameOnCardTextField.getText().isBlank()==false && studentIdTextField.getText().isBlank()==true){
-             if(checkCardNo == true&& checkCardHolder==true){
+             if(checkCardNo == true&& checkCardHolder==true&& checkCVV ==true&& checkExpiryDate ==true){
             total1 = total+sum2;
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
             alert.setContentText("Total cost: RM"+total1+"\nPayment successfully. Thank you for your purchasing");
             alert.show();
              }else{
                  Alert alert = new Alert(Alert.AlertType.ERROR);
-                 alert.setContentText("Invalid card number or name");
+                 alert.setContentText("Invalid card number or CVV or name or expiry date");
                  alert.show();  
              }
     }
          else if(cardNumberTextField.getText().isBlank()==false && cvvTextField.getText().isBlank()==false && expiryDateTextField.getText().isBlank()==false && nameOnCardTextField.getText().isBlank()==false && studentIdTextField.getText().isBlank()==false){
-             if(checkCardNo == true&& checkCardHolder==true){ 
+             if(checkCardNo == true&& checkCardHolder==true&& checkCVV == true){ 
              checkStudent(event,studentIdTextField.getText());
              }else{
                   Alert alert = new Alert(Alert.AlertType.ERROR);

@@ -682,10 +682,10 @@ public class bookingSeatController implements Initializable {
             
         }
     }
-    
+    boolean checkCardNo,checkCardHolder,checkCVV,checkExpiryDate;
     public void submitButton(ActionEvent event) throws SQLException, IOException{
         
-        boolean checkCardNo,checkCardHolder,checkCVV,checkExpiryDate;
+        
         Pattern pt = Pattern.compile("^[0-9]{4} [0-9]{4} [0-9]{4} [0-9]{4}$");
         Pattern pt1 = Pattern.compile("^[a-zA-z\' ,.-]+$");
         Pattern pt2 = Pattern.compile("^[0-9]{3}$");
@@ -751,12 +751,18 @@ public class bookingSeatController implements Initializable {
     public void showTicket(){
         if((cardNumberTextField.getText().isBlank()==false&&cvvTextField.getText().isBlank()==false&&expiryDateTextField.getText().isBlank()==false&&nameOnCardTextField.getText().isBlank()==false&&studentIdTextField.getText().isBlank()==true)||
             (cardNumberTextField.getText().isBlank()==false&&cvvTextField.getText().isBlank()==false&&expiryDateTextField.getText().isBlank()==false&&nameOnCardTextField.getText().isBlank()==false&&studentIdTextField.getText().isBlank()==false)){
+            if(checkCardNo == true&& checkCardHolder==true&& checkCVV ==true&& checkExpiryDate ==true){
         ticketPage.setVisible(true);
         movieLabel.setText(movieChoice);
         dateLabel.setText(dateChoice);
         timeLabel.setText(timeChoice);
         seatLabel.setText(seat);
         hallLabel.setText(Integer.toString(hall));
+            }else{
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setContentText("Invalid card details");
+                alert.show();
+            }
         }else{
           Alert alert = new Alert(Alert.AlertType.ERROR);
           alert.setContentText("Please enter your card details");

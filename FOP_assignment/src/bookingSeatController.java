@@ -19,6 +19,90 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
+import javafx.scene.control.CheckBox;
+import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.Label;
+import javafx.scene.control.RadioButton;
+import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.text.Text;
+import javafx.stage.Stage;
+import java.io.IOException;
+import java.net.URL;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.Random;
+import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
+import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.Label;
+import javafx.scene.control.RadioButton;
+import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.text.Text;
+import javafx.stage.Stage;
+import java.io.IOException;
+import java.net.URL;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
+import javafx.scene.control.CheckBox;
+import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.Label;
+import javafx.scene.control.RadioButton;
+import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.text.Text;
+import javafx.stage.Stage;
+import java.io.IOException;
+import java.net.URL;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
@@ -76,6 +160,7 @@ public class bookingSeatController implements Initializable {
     private String[] date1 = {"3/2/2022","4/2/2022","5/2/2022","6/2/2022","7/2/2022"};
     static double sum2=0;
     String seat = "";
+    String movieChoice,dateChoice,timeChoice;
     
     
     public void backButton(ActionEvent event) throws IOException{
@@ -316,8 +401,11 @@ public class bookingSeatController implements Initializable {
     public void bookButton1(ActionEvent event){
         bookButton(event);
         String movie = movieChoiceBox.getValue();
+        movieChoice = movie;
         String time = timeChoiceBox.getValue();
+        timeChoice = time;
         String date = dateChoiceBox.getValue();
+        dateChoice = date;
         String seatno = seatCheckBox();
         
         if(movie!=null&&time!=null&&date!=null&&seatno!=null){
@@ -394,6 +482,8 @@ public class bookingSeatController implements Initializable {
     double sum1=0;
     static double total;
     static double total1;
+    Random rand = new Random();
+    int hall = rand.nextInt(4)+1;
    
     public void getFood(ActionEvent event){
         
@@ -509,6 +599,7 @@ public class bookingSeatController implements Initializable {
     public void backToBookingSeat(){
         bookingSeatPage.setVisible(true);
         fnbAnchorPane.setVisible(false);
+        ticketPage.setVisible(false);
         
     }
     public void showPaymentPage(){
@@ -521,10 +612,35 @@ public class bookingSeatController implements Initializable {
     public void backToFandB(){
         paymentPage.setVisible(false);
         fnbAnchorPane.setVisible(true);
+        ticketPage.setVisible(false);
     }
     public void showTicket(){
+        if((cardNumberTextField.getText().isBlank()==false&&cvvTextField.getText().isBlank()==false&&expiryDateTextField.getText().isBlank()==false&&nameOnCardTextField.getText().isBlank()==false&&studentIdTextField.getText().isBlank()==true)||
+            (cardNumberTextField.getText().isBlank()==false&&cvvTextField.getText().isBlank()==false&&expiryDateTextField.getText().isBlank()==false&&nameOnCardTextField.getText().isBlank()==false&&studentIdTextField.getText().isBlank()==false)){
         ticketPage.setVisible(true);
+        movieLabel.setText(movieChoice);
+        dateLabel.setText(dateChoice);
+        timeLabel.setText(timeChoice);
+        seatLabel.setText(seat);
+        hallLabel.setText(Integer.toString(hall));
+        }else{
+          Alert alert = new Alert(Alert.AlertType.ERROR);
+          alert.setContentText("Please enter your card details");
+          alert.show();  
+        }
+        
     }
+    public void logout(ActionEvent event){
+        
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Logout");
+        alert.setContentText("Are you sure you want to log out?");
+        
+        
+        if(alert.showAndWait().get()==ButtonType.OK){
+        stage = (Stage)ticketPage.getScene().getWindow();
+        stage.close();
+        }
     
-    
+    }
 }

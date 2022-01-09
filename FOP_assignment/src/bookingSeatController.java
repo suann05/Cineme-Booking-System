@@ -689,7 +689,7 @@ public class bookingSeatController implements Initializable {
         Pattern pt = Pattern.compile("^[0-9]{4} [0-9]{4} [0-9]{4} [0-9]{4}$");
         Pattern pt1 = Pattern.compile("^[a-zA-z\' ,.-]+$");
         Pattern pt2 = Pattern.compile("^[0-9]{3}$");
-        Pattern pt3 = Pattern.compile("^[0-9/]{5}");
+        Pattern pt3 = Pattern.compile("^[0-9/]{5}$");
         
         checkCardNo = (pt.matcher(cardNumberTextField.getText())).matches();
         checkCardHolder = (pt1.matcher(nameOnCardTextField.getText())).matches();

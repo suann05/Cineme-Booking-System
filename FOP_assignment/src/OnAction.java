@@ -375,14 +375,16 @@ public class OnAction {
             preparedStatement.setString(3, time);
             preparedStatement.setString(4, seat);
             preparedStatement.execute();
-            
+        
             
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
             alert.setContentText("THE CHANGES HAVE BEEN SAVED");
             alert.show();
+            
            
             
         }catch(SQLException e){
+            System.out.println("Error occured");
             e.printStackTrace();
         } finally{
             if(resultSet!=null){

@@ -94,6 +94,118 @@ import java.sql.SQLException;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.regex.Pattern;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
+import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.Label;
+import javafx.scene.control.RadioButton;
+import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.text.Text;
+import javafx.stage.Stage;
+import java.io.IOException;
+import java.net.URL;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
+import javafx.scene.control.CheckBox;
+import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.Label;
+import javafx.scene.control.RadioButton;
+import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.text.Text;
+import javafx.stage.Stage;
+import java.io.IOException;
+import java.net.URL;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.Random;
+import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
+import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.Label;
+import javafx.scene.control.RadioButton;
+import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.text.Text;
+import javafx.stage.Stage;
+import java.io.IOException;
+import java.net.URL;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
+import javafx.scene.control.CheckBox;
+import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.Label;
+import javafx.scene.control.RadioButton;
+import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.text.Text;
+import javafx.stage.Stage;
+import java.io.IOException;
+import java.net.URL;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -573,14 +685,32 @@ public class bookingSeatController implements Initializable {
     
     public void submitButton(ActionEvent event) throws SQLException, IOException{
         
+        boolean checkCardNo,checkCardHolder;
+        Pattern pt = Pattern.compile("^[0-9]{4} [0-9]{4} [0-9]{4} [0-9]{4}$");
+        Pattern pt1 = Pattern.compile("^[a-zA-z\' ,.-]+$");
+        checkCardNo = (pt.matcher(cardNumberTextField.getText())).matches();
+        checkCardHolder = (pt1.matcher(nameOnCardTextField.getText())).matches();
+        
          if(cardNumberTextField.getText().isBlank()==false && cvvTextField.getText().isBlank()==false && expiryDateTextField.getText().isBlank()==false && nameOnCardTextField.getText().isBlank()==false && studentIdTextField.getText().isBlank()==true){
+             if(checkCardNo == true&& checkCardHolder==true){
             total1 = total+sum2;
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
             alert.setContentText("Total cost: RM"+total1+"\nPayment successfully. Thank you for your purchasing");
             alert.show();
+             }else{
+                 Alert alert = new Alert(Alert.AlertType.ERROR);
+                 alert.setContentText("Invalid card number or name");
+                 alert.show();  
+             }
     }
          else if(cardNumberTextField.getText().isBlank()==false && cvvTextField.getText().isBlank()==false && expiryDateTextField.getText().isBlank()==false && nameOnCardTextField.getText().isBlank()==false && studentIdTextField.getText().isBlank()==false){
-              checkStudent(event,studentIdTextField.getText());
+             if(checkCardNo == true&& checkCardHolder==true){ 
+             checkStudent(event,studentIdTextField.getText());
+             }else{
+                  Alert alert = new Alert(Alert.AlertType.ERROR);
+                  alert.setContentText("Invalid card number or name");
+                  alert.show();  
+             }
          }else{
           Alert alert = new Alert(Alert.AlertType.ERROR);
           alert.setContentText("Please enter your card details");

@@ -26,7 +26,7 @@ public class FXMain extends Application {
     @Override
     public void start(Stage primaryStage) {
         try{
-        Parent root = FXMLLoader.load(getClass().getResource("login.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("bookingSeat.fxml"));
         Scene scene = new Scene(root);
         Image icon = new Image("cinema.png");
         primaryStage.getIcons().add(icon);

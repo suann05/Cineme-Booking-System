@@ -21,6 +21,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
@@ -373,6 +374,22 @@ public class bookingSeatController implements Initializable {
     @FXML
     private Button showTicket;
     
+    //ticket page 
+    @FXML
+    private AnchorPane ticketPage;
+    @FXML
+    private Label dateLabel;
+    @FXML
+    private Label hallLabel;
+    @FXML
+    private Label movieLabel;
+    @FXML
+    private Label seatLabel;
+    @FXML
+    private Label timeLabel;
+    @FXML
+    private Button logOutButton;
+    
     double sum0=0;
     double sum1=0;
     static double total;
@@ -496,7 +513,6 @@ public class bookingSeatController implements Initializable {
     }
     public void showPaymentPage(){
         paymentPage.setVisible(true);
-        fnbAnchorPane.setVisible(true);
     }
     public void showFandB(){
         fnbAnchorPane.setVisible(true);
@@ -506,5 +522,9 @@ public class bookingSeatController implements Initializable {
         paymentPage.setVisible(false);
         fnbAnchorPane.setVisible(true);
     }
+    public void showTicket(){
+        ticketPage.setVisible(true);
+    }
+    
     
 }

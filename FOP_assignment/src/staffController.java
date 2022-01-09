@@ -7,6 +7,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.RadioButton;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -41,6 +42,8 @@ public class staffController {
     ImageView paymentIcon;
     @FXML
     ImageView fandbIcon;
+    @FXML
+    AnchorPane staffAnchorPane;
     
     
     private Stage stage;
@@ -128,13 +131,25 @@ public class staffController {
         stage.show(); 
         
     }
-    
-    
-    
-    
-    
-    
-    
-    
-    
+      
+     public void logout(ActionEvent event){
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Logout");
+        alert.setContentText("Are you sure you want to log out?");
+        
+        
+        if(alert.showAndWait().get()==ButtonType.OK){
+        stage = (Stage)staffAnchorPane.getScene().getWindow();
+        stage.close();
+     }
+     }    
 }
+    
+    
+    
+    
+    
+    
+    
+    
+

@@ -60,29 +60,58 @@ public class signupController {
     
     public void submitButtonOnAction(ActionEvent event) throws SQLException, IOException{
         
-        boolean checkEmail,checkMobile;
+        boolean checkEmail,checkMobile,checkPass;
         Pattern pt = Pattern.compile("^[_A-Za-z0-9-]+@[A-Za-z0-9-]+.[.A-Za-z]{2,}$");
-        Pattern pt1 = Pattern.compile("^01\\d-\\d{7,8}$");
+        Pattern pt1 = Pattern.compile("^01\\d-\\d{7,8}$"); 
         checkEmail = (pt.matcher(emailTextField.getText())).matches();
         checkMobile = (pt1.matcher(mobileTextField.getText())).matches();
+        if(passwordTextField.getText().length()>8 && passwordTextField.getText().length()<15 ){
+            checkPass = true;
+        }else{
+            checkPass = false;
+        }
         
         if(usernameTextField.getText().isBlank()==false && passwordTextField.getText().isBlank()==false && mobileTextField.getText().isBlank()==false && emailTextField.getText().isBlank()==false && studentTextField.getText().isBlank()==true ){
-            if(checkEmail == true && checkMobile==true){
+            if(checkEmail == true && checkMobile==true && checkPass==true){
                 OnAction.signupUser(event, usernameTextField.getText(), mobileTextField.getText(),emailTextField.getText(),passwordTextField.getText());
                 OnAction.changeScene(event, usernameTextField.getText(), "login.fxml");
+            }else if(checkEmail == true && checkMobile==true && checkPass==false){
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setContentText("Password must be 8-15 characters. Please try again");
+                alert.show();
+            }else if(checkEmail == true && checkMobile==false && checkPass==true){
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setContentText("Invalid mobile number. Please try again");
+                alert.show();
+            }else if(checkEmail == false && checkMobile==true && checkPass==true){
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setContentText("Invalid email. Please try again");
+                alert.show();
             }else{
                 Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.setContentText("Invalid email or mobile number. Please try again");
+                alert.setContentText("Invalid information. Please try again");
                 alert.show();  
             }
         }else if(usernameTextField.getText().isBlank()==false && passwordTextField.getText().isBlank()==false && mobileTextField.getText().isBlank()==false && emailTextField.getText().isBlank()==false && studentTextField.getText().isBlank()==false){
-                if(checkEmail == true && checkMobile==true){
-               OnAction.signupUser1(event, usernameTextField.getText(), mobileTextField.getText(),emailTextField.getText(),passwordTextField.getText(),studentTextField.getText());
-               OnAction.changeScene(event, usernameTextField.getText(), "login.fxml");
-                }else{
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setContentText("Invalid email or mobile number. Please try again");
-            alert.show();  
+                if(checkEmail == true && checkMobile==true &&checkPass==true  ){
+                  OnAction.signupUser1(event, usernameTextField.getText(), mobileTextField.getText(),emailTextField.getText(),passwordTextField.getText(),studentTextField.getText());
+                  OnAction.changeScene(event, usernameTextField.getText(), "login.fxml");
+                }else if(checkEmail == true && checkMobile==true && checkPass==false){
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setContentText("Password must be 8-15 characters. Please try again");
+                alert.show();
+            }else if(checkEmail == true && checkMobile==false && checkPass==true){
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setContentText("Invalid mobile number. Please try again");
+                alert.show();
+            }else if(checkEmail == false && checkMobile==true && checkPass==true){
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setContentText("Invalid email. Please try again");
+                alert.show();
+            }else{
+                  Alert alert = new Alert(Alert.AlertType.ERROR);
+                  alert.setContentText("Invalid information. Please try again");
+                  alert.show();  
             }
         }else{
             System.out.println("Please fill up all the information");

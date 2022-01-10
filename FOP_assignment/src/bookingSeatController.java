@@ -686,10 +686,10 @@ public class bookingSeatController implements Initializable {
     public void submitButton(ActionEvent event) throws SQLException, IOException{
         
         
-        Pattern pt = Pattern.compile("^[0-9]{4} [0-9]{4} [0-9]{4} [0-9]{4}$");
-        Pattern pt1 = Pattern.compile("^[a-zA-z\' ,.-]+$");
-        Pattern pt2 = Pattern.compile("^[0-9]{3}$");
-        Pattern pt3 = Pattern.compile("^[0-9/]{5}$");
+        Pattern pt = Pattern.compile("^[0-9]{4} [0-9]{4} [0-9]{4} [0-9]{4}$"); // card number
+        Pattern pt1 = Pattern.compile("^[a-zA-z\' ,.-]+$"); //card holder
+        Pattern pt2 = Pattern.compile("^[0-9]{3}$"); //CVV
+        Pattern pt3 = Pattern.compile("^[0-9/]{5}$"); //expiry date
         
         checkCardNo = (pt.matcher(cardNumberTextField.getText())).matches();
         checkCardHolder = (pt1.matcher(nameOnCardTextField.getText())).matches();
@@ -697,28 +697,64 @@ public class bookingSeatController implements Initializable {
         checkExpiryDate = (pt3.matcher(expiryDateTextField.getText())).matches();
         
          if(cardNumberTextField.getText().isBlank()==false && cvvTextField.getText().isBlank()==false && expiryDateTextField.getText().isBlank()==false && nameOnCardTextField.getText().isBlank()==false && studentIdTextField.getText().isBlank()==true){
-             if(checkCardNo == true&& checkCardHolder==true&& checkCVV ==true&& checkExpiryDate ==true){
+             if(checkCardNo==true && checkCardHolder==true && checkCVV==true && checkExpiryDate==true){
             total1 = total+sum2;
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
             alert.setContentText("Total cost: RM"+total1+"\nPayment successfully. Thank you for your purchasing");
             alert.show();
+             }else if(checkCardNo==false && checkCardHolder==true && checkCVV==true && checkExpiryDate==true){
+                 Alert alert = new Alert(Alert.AlertType.ERROR);
+                 alert.setContentText("Invalid card number. Please try again.");
+                 alert.show();  
+             }else if(checkCardNo == true && checkCardHolder==false && checkCVV==true && checkExpiryDate==true){
+                 Alert alert = new Alert(Alert.AlertType.ERROR);
+                 alert.setContentText("Invalid name. Please try again.");
+                 alert.show();
+             }else if(checkCardNo == true && checkCardHolder==true && checkCVV==false && checkExpiryDate==true){
+                 Alert alert = new Alert(Alert.AlertType.ERROR);
+                 alert.setContentText("Invalid CVV. Please try again.");
+                 alert.show();
+             }else if(checkCardNo == true && checkCardHolder==true && checkCVV==true && checkExpiryDate==false){
+                 Alert alert = new Alert(Alert.AlertType.ERROR);
+                 alert.setContentText("Invalid card expiry date. Please try again.");
+                 alert.show();
+             }else if(checkCardNo == false && checkCardHolder==false && checkCVV==true && checkExpiryDate==true){
+                 Alert alert = new Alert(Alert.AlertType.ERROR);
+                 alert.setContentText("Invalid card number and name. Please try again.");
+                 alert.show();
+             }else if(checkCardNo == false && checkCardHolder==true && checkCVV==false && checkExpiryDate==true){
+                 Alert alert = new Alert(Alert.AlertType.ERROR);
+                 alert.setContentText("Invalid card number and CVV. Please try again.");
+                 alert.show();
+             }else if(checkCardNo == false && checkCardHolder==true && checkCVV==true && checkExpiryDate==false){
+                 Alert alert = new Alert(Alert.AlertType.ERROR);
+                 alert.setContentText("Invalid card number and expiry date. Please try again.");
+                 alert.show();
+             }else if(checkCardNo == true && checkCardHolder==false && checkCVV==false && checkExpiryDate==true){
+                 Alert alert = new Alert(Alert.AlertType.ERROR);
+                 alert.setContentText("Invalid name and CVV. Please try again.");
+                 alert.show();
+             }else if(checkCardNo == true && checkCardHolder==false && checkCVV==true && checkExpiryDate==false){
+                 Alert alert = new Alert(Alert.AlertType.ERROR);
+                 alert.setContentText("Invalid name and expiry date. Please try again.");
+                 alert.show();
+             }else if(checkCardNo == true && checkCardHolder==true && checkCVV==false && checkExpiryDate==false){
+                 Alert alert = new Alert(Alert.AlertType.ERROR);
+                 alert.setContentText("Invalid CVV and expiry date. Please try again.");
+                 alert.show();
              }else{
                  Alert alert = new Alert(Alert.AlertType.ERROR);
-                 alert.setContentText("Invalid card number or CVV or name or expiry date");
-                 alert.show();  
+                 alert.setContentText("Please enter valid card details.");
+                 alert.show();
              }
     }
          else if(cardNumberTextField.getText().isBlank()==false && cvvTextField.getText().isBlank()==false && expiryDateTextField.getText().isBlank()==false && nameOnCardTextField.getText().isBlank()==false && studentIdTextField.getText().isBlank()==false){
-             if(checkCardNo == true&& checkCardHolder==true&& checkCVV == true){ 
+             if(checkCardNo==true && checkCardHolder==true && checkCVV==true && checkExpiryDate==true){ 
              checkStudent(event,studentIdTextField.getText());
-             }else{
-                  Alert alert = new Alert(Alert.AlertType.ERROR);
-                  alert.setContentText("Invalid card number or name");
-                  alert.show();  
              }
          }else{
           Alert alert = new Alert(Alert.AlertType.ERROR);
-          alert.setContentText("Please enter your card details");
+          alert.setContentText("Please enter complete card details");
           alert.show();   
          }
     }

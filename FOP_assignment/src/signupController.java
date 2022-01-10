@@ -119,10 +119,6 @@ public class signupController {
             alert.setContentText("Please fill up all the information to sign up");
             alert.show();
         }
-            
-       
-        
-    
 
     }
     

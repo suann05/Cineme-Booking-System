@@ -69,7 +69,8 @@ public class OnAction {
     }
     
     public static void signupUser(ActionEvent event, String username, String mobile, String email , String password) throws SQLException{
-        Connection connection = null;
+        
+        Connection connection = null;  
         PreparedStatement psInsert = null;
         PreparedStatement psInsert1 = null;
         PreparedStatement psCheckUserExists = null;
@@ -220,13 +221,14 @@ public class OnAction {
     }
     
     public static void loginUser(ActionEvent event,String username,String password)throws SQLException, IOException{
+        
         Connection connection = null;
         PreparedStatement preparedStatement = null;
         ResultSet resultSet2 = null;
         
         try{
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/javafx-loginsigup", "root", "root");
-            preparedStatement = connection.prepareStatement("SELECT password FROM users WHERE username = ?");
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/javafx-loginsigup", "root", "root"); //connect to your databases, javafx-loginsigup is my scheme name, root is my user and root is my password 
+            preparedStatement = connection.prepareStatement("SELECT password FROM users WHERE username = ?"); 
             preparedStatement.setString(1, username);
             resultSet2 = preparedStatement.executeQuery();
             

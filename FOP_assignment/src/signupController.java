@@ -76,8 +76,8 @@ public class signupController {
         props.put("mail.smtp.host","smtp.gmail.com");
         props.put("mail.smtp.port","587");
         
-        String myAccountEmail= "ngsuann2002@gmail.com";
-        String password="NgSuAnn021005";
+        String myAccountEmail= "u2102795@siswa.um.edu.my";
+        String password="u21583b4ebd";
        
         Session session = Session.getInstance(props,new Authenticator() {
             @Override

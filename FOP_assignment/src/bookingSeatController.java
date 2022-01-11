@@ -685,7 +685,6 @@ public class bookingSeatController implements Initializable {
     boolean checkCardNo,checkCardHolder,checkCVV,checkExpiryDate;
     public void submitButton(ActionEvent event) throws SQLException, IOException{
         
-        
         Pattern pt = Pattern.compile("^[0-9]{4} [0-9]{4} [0-9]{4} [0-9]{4}$"); // card number
         Pattern pt1 = Pattern.compile("^[a-zA-z\' ,.-]+$"); //card holder
         Pattern pt2 = Pattern.compile("^[0-9]{3}$"); //CVV

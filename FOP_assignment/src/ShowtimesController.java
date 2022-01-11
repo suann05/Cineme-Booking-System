@@ -28,43 +28,28 @@ public class ShowtimesController {
     
     @FXML
     private AnchorPane mainPage;
-    
     @FXML
     private Button back;
-    
     @FXML
     private Button doctorStrange;
-
     @FXML
     private AnchorPane doctorStrangePage;
-
     @FXML
     private Button eternals;
-
     @FXML
     private AnchorPane eternalsPage;
-
     @FXML
     private Button spiderMan;
-
     @FXML
     private AnchorPane spiderManPage;
-
     @FXML
     private Button venom;
-
     @FXML
     private AnchorPane venomPage;
-    
     @FXML
     private RadioButton bookingButton;
-    
     @FXML
     private RadioButton cancelButton;
-    
-    
-    
-    
     
     private Stage stage;
     private Scene scene;

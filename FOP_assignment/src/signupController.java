@@ -1,6 +1,7 @@
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.Properties;
 import java.util.regex.Pattern;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -14,6 +15,13 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
+import javax.mail.Authenticator;
+import javax.mail.MessagingException;
+import javax.mail.PasswordAuthentication;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -58,8 +66,50 @@ public class signupController {
         
     }
     
-    public void submitButtonOnAction(ActionEvent event) throws SQLException, IOException{
+    public void sendEmail(String recepient,String username)throws Exception{
         
+        String to = emailTextField.getText();
+        
+        Properties props = new Properties();
+        props.put("mail.smtp.auth","true");
+        props.put("mail.smtp.starttls.enable","true");
+        props.put("mail.smtp.host","smtp.gmail.com");
+        props.put("mail.smtp.port","587");
+        
+        String myAccountEmail= "ngsuann2002@gmail.com";
+        String password="NgSuAnn021005";
+       
+        Session session = Session.getInstance(props,new Authenticator() {
+            @Override
+            protected PasswordAuthentication getPasswordAuthentication(){
+                return new PasswordAuthentication(myAccountEmail,password);
+            }
+        
+        });
+        
+        try{
+
+            //create mail
+            MimeMessage m = new MimeMessage(session);
+            m.setFrom(new InternetAddress(myAccountEmail));
+            m.setSubject("Thanks for signing up UMSC.");
+            m.addRecipient(MimeMessage.RecipientType.TO, new InternetAddress(to));
+            m.setText("Hi, "+username+".Welcome to UMSC ticket booking system.");
+
+            //send mail
+
+            Transport.send(m);
+            System.out.println("Message sent!");
+
+        }   catch (MessagingException e){
+            e.printStackTrace();
+        }
+
+    }
+    
+    public void submitButtonOnAction(ActionEvent event) throws SQLException, IOException, Exception{
+        String a = emailTextField.getText();
+        String b = usernameTextField.getText();
         boolean checkEmail,checkMobile,checkPass;
         Pattern pt = Pattern.compile("^[_A-Za-z0-9-]+@[A-Za-z0-9-]+.[.A-Za-z]{2,}$");
         Pattern pt1 = Pattern.compile("^01\\d-\\d{7,8}$"); 
@@ -74,6 +124,7 @@ public class signupController {
         if(usernameTextField.getText().isBlank()==false && passwordTextField.getText().isBlank()==false && mobileTextField.getText().isBlank()==false && emailTextField.getText().isBlank()==false && studentTextField.getText().isBlank()==true ){
             if(checkEmail == true && checkMobile==true && checkPass==true){
                 OnAction.signupUser(event, usernameTextField.getText(), mobileTextField.getText(),emailTextField.getText(),passwordTextField.getText());
+                sendEmail(a,b);                
                 OnAction.changeScene(event, usernameTextField.getText(), "login.fxml");
             }else if(checkEmail == true && checkMobile==true && checkPass==false){
                 Alert alert = new Alert(Alert.AlertType.ERROR);

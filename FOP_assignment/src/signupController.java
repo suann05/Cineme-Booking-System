@@ -72,6 +72,8 @@ public class signupController {
     
     public void submitButtonOnAction(ActionEvent event) throws SQLException, IOException, Exception{
        
+        
+        
         boolean checkEmail,checkMobile,checkPass;
         Pattern pt = Pattern.compile("^[_A-Za-z0-9-]+@[A-Za-z0-9-]+.[.A-Za-z]{2,}$");
         Pattern pt1 = Pattern.compile("^01\\d-\\d{7,8}$"); 
@@ -85,7 +87,7 @@ public class signupController {
         
         if(usernameTextField.getText().isBlank()==false && passwordTextField.getText().isBlank()==false && mobileTextField.getText().isBlank()==false && emailTextField.getText().isBlank()==false && studentTextField.getText().isBlank()==true ){
             if(checkEmail == true && checkMobile==true && checkPass==true){
-                OnAction.signupUser(event, usernameTextField.getText(), mobileTextField.getText(),emailTextField.getText(),passwordTextField.getText());                
+                OnAction.signupUser(event, usernameTextField.getText(), mobileTextField.getText(),emailTextField.getText(),passwordTextField.getText()); 
                 OnAction.changeScene(event, usernameTextField.getText(), "login.fxml");
             }else if(checkEmail == true && checkMobile==true && checkPass==false){
                 Alert alert = new Alert(Alert.AlertType.ERROR);

@@ -377,12 +377,17 @@ public class OnAction {
             preparedStatement.setString(2, date);
             preparedStatement.setString(3, time);
             preparedStatement.setString(4, seat);
-            preparedStatement.execute();
+            int k = preparedStatement.executeUpdate();
         
-            
+            if(k==1){
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
             alert.setContentText("THE CHANGES HAVE BEEN SAVED");
             alert.show();
+            }else{
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                   alert.setContentText("THERE IS AN ERROR");
+                   alert.show();
+            }
             
            
             
@@ -497,12 +502,17 @@ public class OnAction {
             preparedStatement.setString(1, name);
             preparedStatement.setString(2, date);
             preparedStatement.setString(3, time);
-            preparedStatement.execute();
+            int k = preparedStatement.executeUpdate();
             
-            
+            if(k==1){
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
             alert.setContentText("THE CHANGES HAVE BEEN SAVED");
             alert.show();
+            }else{
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                   alert.setContentText("THERE IS AN ERROR");
+                   alert.show();
+            }
            
             
         }catch(SQLException e){
@@ -533,21 +543,29 @@ public class OnAction {
         }
     }
     
-    public static void removefandb(ActionEvent event,String name){
+    public static void removefandb(ActionEvent event,String name,String des,String price){
         Connection connection = null;
         PreparedStatement preparedStatement = null;
         ResultSet resultSet = null;
         
         try{
             connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/addfandb", "root", "root");
-            preparedStatement = connection.prepareStatement("delete from fandb where name = ?");
+            preparedStatement = connection.prepareStatement("delete from fandb where name = ? and des = ? and price = ?");
             preparedStatement.setString(1, name);
-            preparedStatement.execute();
+            preparedStatement.setString(2, des);
+            preparedStatement.setString(3, price);
             
+            int k = preparedStatement.executeUpdate();
             
+            if(k==1){
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
             alert.setContentText("THE CHANGES HAVE BEEN SAVED");
             alert.show();
+            }else{
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                   alert.setContentText("THERE IS AN ERROR");
+                   alert.show();
+            }
            
             
         }catch(SQLException e){
@@ -845,12 +863,17 @@ public class OnAction {
             connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/addseat", "root", "root");
             preparedStatement = connection.prepareStatement("delete from seat where Seat = ?");
             preparedStatement.setString(1, seat);
-            preparedStatement.execute();
+            int k = preparedStatement.executeUpdate();
             
-            
+            if(k==1){
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
             alert.setContentText("THE CHANGES HAVE BEEN SAVED");
             alert.show();
+            }else{
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setContentText("THERE IS AN ERROR");
+            alert.show();
+            }
            
             
         }catch(SQLException e){

@@ -508,17 +508,17 @@ public class bookingSeatController implements Initializable {
         String seatno = seatCheckBox();
     }
     
-    
+    String movie,time,date,seatno;
         
     public void bookButton1(ActionEvent event){
         bookButton(event);
-        String movie = movieChoiceBox.getValue();
+        movie = movieChoiceBox.getValue();
         movieChoice = movie;
-        String time = timeChoiceBox.getValue();
+        time = timeChoiceBox.getValue();
         timeChoice = time;
-        String date = dateChoiceBox.getValue();
+        date = dateChoiceBox.getValue();
         dateChoice = date;
-        String seatno = seatCheckBox();
+        seatno = seatCheckBox();
         
         if(movie!=null&&time!=null&&date!=null&&seatno!=null){
         try {
@@ -779,7 +779,13 @@ public class bookingSeatController implements Initializable {
         paymentPage.setVisible(true);
     }
     public void showFandB(){
+        if(movie==null&&time==null&&date==null&&seatno==null){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setContentText("Please select details of movie or seat");
+        alert.show();
+        }else{
         fnbAnchorPane.setVisible(true);
+        }
     }
     
     public void backToFandB(){

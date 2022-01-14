@@ -88,7 +88,7 @@ public class signupController {
         if(usernameTextField.getText().isBlank()==false && passwordTextField.getText().isBlank()==false && mobileTextField.getText().isBlank()==false && emailTextField.getText().isBlank()==false && studentTextField.getText().isBlank()==true ){
             if(checkEmail == true && checkMobile==true && checkPass==true){
                 OnAction.signupUser(event, usernameTextField.getText(), mobileTextField.getText(),emailTextField.getText(),passwordTextField.getText()); 
-                OnAction.changeScene(event, usernameTextField.getText(), "login.fxml");
+                //OnAction.changeScene(event, usernameTextField.getText(), "login.fxml");
             }else if(checkEmail == true && checkMobile==true && checkPass==false){
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setContentText("Password must be 8-15 characters. Please try again");

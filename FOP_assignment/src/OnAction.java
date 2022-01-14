@@ -76,7 +76,7 @@ public class OnAction {
         
     }
     
-    public static void signupUser(ActionEvent event, String username, String mobile, String email , String password) throws SQLException{
+    public static void signupUser(ActionEvent event, String username, String mobile, String email , String password) throws SQLException, IOException{
         
         Connection connection = null;  
         PreparedStatement psInsert = null;
@@ -88,17 +88,15 @@ public class OnAction {
         
         try{
             connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/javafx-loginsigup", "root", "root");
-            psCheckUserExists = connection.prepareStatement("SELECT * FROM users WHERE username = ?");
-            psCheckUserExists1 = connection.prepareStatement("SELECT * FROM users WHERE email = ?");
-            psCheckUserExists.setString(1, username);
-            psCheckUserExists1.setString(1, email);
+            psCheckUserExists = connection.prepareStatement("SELECT * FROM users WHERE email = ?");
+            psCheckUserExists.setString(1, email);
             resultSet = psCheckUserExists.executeQuery();
             
             
             if(resultSet.isBeforeFirst()){
                 System.out.println("User already exists");
                 Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.setContentText("You cannot use this username");
+                alert.setContentText("You cannot use this email");
                 alert.show();
                 
             }
@@ -111,6 +109,7 @@ public class OnAction {
                 psInsert.setString(3, email);
                 psInsert.setString(4, password);
                 psInsert.executeUpdate();
+                changeScene(event,username,"login.fxml");
                 
             }
         } catch(SQLException e){

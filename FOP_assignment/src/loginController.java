@@ -28,7 +28,7 @@ import javafx.stage.Stage;
 public class loginController {
     
     @FXML
-    private TextField usernameTextField;
+    private TextField emailTextField;
     @FXML
     private PasswordField passwordTextField;
     @FXML
@@ -50,14 +50,14 @@ public class loginController {
    
         public void signinButtonOnAction(ActionEvent event) throws SQLException, IOException{
           
-            if(usernameTextField.getText().isBlank()==false && passwordTextField.getText().isBlank()==false){
+            if(emailTextField.getText().isBlank()==false && passwordTextField.getText().isBlank()==false){
               
-                    OnAction.loginUser(event, usernameTextField.getText(), passwordTextField.getText());
+                    OnAction.loginUser(event, emailTextField.getText(), passwordTextField.getText());
                    
             }else{
                 
                 Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.setContentText("Please enter your username and password");
+                alert.setContentText("Please enter your email and password");
                 alert.show();
             }
             

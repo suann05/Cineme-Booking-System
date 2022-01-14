@@ -228,7 +228,7 @@ public class OnAction {
         }
     }
     
-    public static void loginUser(ActionEvent event,String username,String password)throws SQLException, IOException{
+    public static void loginUser(ActionEvent event,String email,String password)throws SQLException, IOException{
         
         Connection connection = null;
         PreparedStatement preparedStatement = null;
@@ -236,8 +236,8 @@ public class OnAction {
         
         try{
             connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/javafx-loginsigup", "root", "root"); //connect to your databases, javafx-loginsigup is my scheme name, root is my user and root is my password 
-            preparedStatement = connection.prepareStatement("SELECT password FROM users WHERE username = ?"); 
-            preparedStatement.setString(1, username);
+            preparedStatement = connection.prepareStatement("SELECT password FROM users WHERE email = ?"); 
+            preparedStatement.setString(1, email);
             resultSet2 = preparedStatement.executeQuery();
             
             if(!(resultSet2.isBeforeFirst())){
@@ -250,7 +250,7 @@ public class OnAction {
                 while(resultSet2.next()){
                     String retrivedPassword = resultSet2.getString("password");
                     if(retrivedPassword.equals(password)){
-                         changeScene(event,username,"chooseChar.fxml"); 
+                         changeScene(event,email,"chooseChar.fxml"); 
                         
                     }
                     else{

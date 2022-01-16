@@ -779,7 +779,7 @@ public class bookingSeatController implements Initializable {
         paymentPage.setVisible(true);
     }
     public void showFandB(){
-        if(movie==null&&time==null&&date==null&&seatno==null){
+        if(movie==null&&time==null&&date==null&&seat==null){
             Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setContentText("Please select details of movie or seat");
         alert.show();

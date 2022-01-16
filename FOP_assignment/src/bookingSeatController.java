@@ -520,7 +520,7 @@ public class bookingSeatController implements Initializable {
         dateChoice = date;
         seatno = seatCheckBox();
         
-        if(movie!=null&&time!=null&&date!=null&&seatno!=null){
+        if(movie!=null&&time!=null&&date!=null&&seat!=null){
         try {
             OnAction.bookSeat(event, movie, date, time, seat);
         } catch (SQLException ex) {
@@ -779,13 +779,13 @@ public class bookingSeatController implements Initializable {
         paymentPage.setVisible(true);
     }
     public void showFandB(){
-        if(movie==null&&time==null&&date==null&&seat==null){
-            Alert alert = new Alert(Alert.AlertType.ERROR);
+        if(movie!=null&&time!=null&&date!=null&&seat!=null){
+            fnbAnchorPane.setVisible(true);
+        }else{
+        Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setContentText("Please select details of movie or seat");
         alert.show();
-        }else{
-        fnbAnchorPane.setVisible(true);
-        }
+    }
     }
     
     public void backToFandB(){

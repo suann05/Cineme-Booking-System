@@ -299,7 +299,7 @@ public class OnAction {
             preparedStatement.setString(4, seat);
             resultSet = preparedStatement.executeQuery();
             
-            if(resultSet.isBeforeFirst()){
+           if(resultSet.isBeforeFirst()){
                 
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setContentText("THIS SEAT ("+seat+") HAS BEEN CHOSEN");

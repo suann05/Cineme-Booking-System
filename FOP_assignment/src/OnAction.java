@@ -310,6 +310,7 @@ public class OnAction {
                if(seat=="D1"||seat=="D2"||seat=="D3"||seat=="D4"||seat=="D5"||seat=="D6"||seat=="D7"||seat=="D8"||seat=="D9"||seat=="D10"||
                   seat=="E1"||seat=="E2"||seat=="E3"||seat=="E4"||seat=="E5"||seat=="E6"||seat=="E7"||seat=="E8"||seat=="E9"||seat=="E10"){
                 sum+=10;
+            
             }else{
                    sum+=8;
                }

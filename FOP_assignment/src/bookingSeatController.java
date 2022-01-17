@@ -520,7 +520,12 @@ public class bookingSeatController implements Initializable {
         dateChoice = date;
         seatno = seatCheckBox();
         
-        if(movie!=null&&time!=null&&date!=null&&seat!=null){
+        if(seat==""){
+               Alert alert1 = new Alert(Alert.AlertType.ERROR);
+               alert1.setContentText("Please choose your seat");
+               alert1.show();
+        }
+        else if(movie!=null&&time!=null&&date!=null&&seat!=null){
         try {
             OnAction.bookSeat(event, movie, date, time, seat);
         } catch (SQLException ex) {
